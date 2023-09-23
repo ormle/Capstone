@@ -20,7 +20,7 @@ namespace TouchScript.InputSources
     /// </summary>
     [AddComponentMenu("TouchScript/Input Sources/TUIO Input")]
     [HelpURL("http://touchscript.github.io/docs/html/T_TouchScript_InputSources_TuioInput.htm")]
-    public sealed class TuioInput : InputSource
+    public class TuioInput : InputSource
     {
         #region Constants
 
@@ -49,7 +49,7 @@ namespace TouchScript.InputSources
         #endregion
 
         #region Public properties
-
+        public int panelIndex = 0, numPanels = 0;
         /// <summary>
         /// Port to listen to.
         /// </summary>
@@ -271,7 +271,7 @@ namespace TouchScript.InputSources
         private TouchPointer internalAddTouch(Vector2 position)
         {
             var pointer = touchPool.Get();
-            pointer.Position = remapCoordinates(position);
+            pointer.Position = remapCoordinates(position, panelIndex, numPanels);
             pointer.Buttons |= Pointer.PointerButtonState.FirstButtonDown | Pointer.PointerButtonState.FirstButtonPressed;
             addPointer(pointer);
             pressPointer(pointer);
@@ -292,7 +292,7 @@ namespace TouchScript.InputSources
         private ObjectPointer internalAddObject(Vector2 position)
         {
             var pointer = objectPool.Get();
-            pointer.Position = remapCoordinates(position);
+            pointer.Position = remapCoordinates(position, panelIndex, numPanels);
             pointer.Buttons |= Pointer.PointerButtonState.FirstButtonDown | Pointer.PointerButtonState.FirstButtonPressed;
             addPointer(pointer);
             pressPointer(pointer);
@@ -373,12 +373,14 @@ namespace TouchScript.InputSources
 
         private void OnCursorAdded(object sender, TuioCursorEventArgs e)
         {
+
+
             var entity = e.Cursor;
             lock (this)
             {
-                var x = entity.X * screenWidth;
-                var y = (1 - entity.Y) * screenHeight;
-                cursorToInternalId.Add(entity, internalAddTouch(new Vector2(x, y)));
+                //var x = entity.X * screenWidth;
+                //var y = (1 - entity.Y) * screenHeight;
+                cursorToInternalId.Add(entity, internalAddTouch(new Vector2(entity.X, entity.Y)));
             }
         }
 
@@ -390,10 +392,10 @@ namespace TouchScript.InputSources
                 TouchPointer touch;
                 if (!cursorToInternalId.TryGetValue(entity, out touch)) return;
 
-                var x = entity.X * screenWidth;
-                var y = (1 - entity.Y) * screenHeight;
+                //var x = entity.X * screenWidth;
+                //var y = (1 - entity.Y) * screenHeight;
 
-                touch.Position = remapCoordinates(new Vector2(x, y));
+                touch.Position = remapCoordinates(new Vector2(entity.X, entity.Y), panelIndex, numPanels);
                 updatePointer(touch);
             }
         }
@@ -417,8 +419,8 @@ namespace TouchScript.InputSources
             var entity = e.Blob;
             lock (this)
             {
-                var x = entity.X * screenWidth;
-                var y = (1 - entity.Y) * screenHeight;
+                var x = entity.X;//entity.X * screenWidth;
+                var y = entity.Y;// (1 - entity.Y) * screenHeight;
                 var touch = internalAddObject(new Vector2(x, y));
                 updateBlobProperties(touch, entity);
                 blobToInternalId.Add(entity, touch);
@@ -433,10 +435,10 @@ namespace TouchScript.InputSources
                 ObjectPointer touch;
                 if (!blobToInternalId.TryGetValue(entity, out touch)) return;
 
-                var x = entity.X * screenWidth;
-                var y = (1 - entity.Y) * screenHeight;
+                //var x = entity.X * screenWidth;
+                //var y = (1 - entity.Y) * screenHeight;
 
-                touch.Position = remapCoordinates(new Vector2(x, y));
+                touch.Position = remapCoordinates(new Vector2(entity.X, entity.Y), panelIndex, numPanels);
                 updateBlobProperties(touch, entity);
                 updatePointer(touch);
             }
@@ -461,8 +463,8 @@ namespace TouchScript.InputSources
             var entity = e.Object;
             lock (this)
             {
-                var x = entity.X * screenWidth;
-                var y = (1 - entity.Y) * screenHeight;
+                var x = entity.X;//entity.X * screenWidth;
+                var y = entity.Y;// (1 - entity.Y) * screenHeight;
                 var touch = internalAddObject(new Vector2(x, y));
                 updateObjectProperties(touch, entity);
                 objectToInternalId.Add(entity, touch);
@@ -477,10 +479,10 @@ namespace TouchScript.InputSources
                 ObjectPointer touch;
                 if (!objectToInternalId.TryGetValue(entity, out touch)) return;
 
-                var x = entity.X * screenWidth;
-                var y = (1 - entity.Y) * screenHeight;
+                //  var x = entity.X * screenWidth;
+                //  var y = (1 - entity.Y) * screenHeight;
 
-                touch.Position = remapCoordinates(new Vector2(x, y));
+                touch.Position = remapCoordinates(new Vector2(entity.X, entity.Y), panelIndex, numPanels);
                 updateObjectProperties(touch, entity);
                 updatePointer(touch);
             }
