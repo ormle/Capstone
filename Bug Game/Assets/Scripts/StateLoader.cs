@@ -12,22 +12,31 @@ public class StateLoader : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (Input.GetMouseButtonDown(0))
+		if (Input.GetKey("right"))
 		{
-			LoadPlayState();
+			NextState();
+		}
+		if (Input.GetKey("left"))
+		{
+			PreviousState();
 		}
 	}
 
 
-	public void LoadPlayState()
+	public void NextState()
 	{
 		StartCoroutine(LoadState(SceneManager.GetActiveScene().buildIndex + 1));
+	}
+
+	public void PreviousState()
+	{
+		StartCoroutine(LoadState(SceneManager.GetActiveScene().buildIndex - 1));
 	}
 
 	//Creating coroutine??
 	IEnumerator LoadState(int sceneIndex)
 	{
-		transition.SetTrigger("Start");
+		
 
 		yield return new WaitForSeconds(transitionTime);
 
