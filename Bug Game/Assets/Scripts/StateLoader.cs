@@ -36,7 +36,15 @@ public class StateLoader : MonoBehaviour
 	//Creating coroutine??
 	IEnumerator LoadState(int sceneIndex)
 	{
-		
+		switch (sceneIndex)
+		{
+			case 0:
+				transition.SetTrigger("Ready");
+				break;
+			case 1:
+				transition.SetTrigger("EndGame");
+				break;
+		}
 
 		yield return new WaitForSeconds(transitionTime);
 
