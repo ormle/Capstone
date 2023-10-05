@@ -38,11 +38,8 @@ public class StateLoader : MonoBehaviour
 	{
 		switch (sceneIndex)
 		{
-			case 0:
+			case 2:
 				transition.SetTrigger("Ready");
-				break;
-			case 1:
-				transition.SetTrigger("EndGame");
 				break;
 		}
 
