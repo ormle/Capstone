@@ -1110,7 +1110,7 @@ MonoBehaviour:
   OnStateChange:
     m_PersistentCalls:
       m_Calls: []
-  basicEditor: 1
+  basicEditor: 0
   generalProps: 0
   limitsProps: 0
   advancedProps: 0
@@ -1209,6 +1209,10 @@ PrefabInstance:
     - target: {fileID: 6520244953279713260, guid: 50a5462a4846fef4eac48de8f80f0f6d, type: 3}
       propertyPath: m_Name
       value: StateLoader
+      objectReference: {fileID: 0}
+    - target: {fileID: 6520244953279713260, guid: 50a5462a4846fef4eac48de8f80f0f6d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6520244953279713261, guid: 50a5462a4846fef4eac48de8f80f0f6d, type: 3}
       propertyPath: m_RootOrder

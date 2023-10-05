@@ -6,7 +6,7 @@ using TouchScript.Gestures;
 public class DespawnBug : MonoBehaviour
 {
     // public Image bug;
-    
+    public ShowScore score = new ShowScore();
 
     void Start()
     {
@@ -17,9 +17,9 @@ public class DespawnBug : MonoBehaviour
     
     void TapGesture_Tapped (object sender, System.EventArgs e) {
 
-        // bug.CrossFadeAlpha(0,10,true) ;
-        gameObject.SetActive(false);
-
+		// bug.CrossFadeAlpha(0,10,true) ;
+		score.AddScore(1);
+		gameObject.SetActive(false);
         //Debug.Log("bug gone");
     }
 
