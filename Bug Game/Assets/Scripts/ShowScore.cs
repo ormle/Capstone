@@ -25,4 +25,9 @@ public class ShowScore : MonoBehaviour
 			textElement.text = textValue + scoreValue;
 		}
 	}
+
+    public void AddScore(int points) { 
+        scoreValue += points;
+		textElement.text = textValue + scoreValue;
+	}
 }
