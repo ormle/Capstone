@@ -19,8 +19,12 @@ public class DespawnBug : MonoBehaviour
 
 		// bug.CrossFadeAlpha(0,10,true) ;
 		score.AddScore(1);
-		gameObject.SetActive(false);
+        despawnBug();
         //Debug.Log("bug gone");
     }
+
+    public void despawnBug() {
+		gameObject.SetActive(false);
+	}
 
 }
