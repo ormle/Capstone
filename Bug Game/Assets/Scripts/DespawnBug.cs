@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TouchScript.Gestures;
-using UnityEngine.SceneManagement;
 
-public class HomeButton : MonoBehaviour
+public class DespawnBug : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // public Image bug;
+    
+
     void Start()
     {
         TapGesture tapGesture = this.GetComponent<TapGesture> () ;
@@ -15,6 +16,11 @@ public class HomeButton : MonoBehaviour
 
     
     void TapGesture_Tapped (object sender, System.EventArgs e) {
-        SceneManager.LoadScene("TitleScene");
+
+        // bug.CrossFadeAlpha(0,10,true) ;
+        gameObject.SetActive(false);
+
+        //Debug.Log("bug gone");
     }
+
 }
