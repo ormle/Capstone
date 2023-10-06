@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TouchScript.Gestures;
+using System;
 
 public class Bug : MonoBehaviour
 {
 	// public Image bug;
-	public ShowScore score = new ShowScore();
+	//public ShowScore score = ShowScore();
 
-	void Start()
+    void Start()
 	{
 		TapGesture tapGesture = this.GetComponent<TapGesture>();
 		tapGesture.Tapped += TapGesture_Tapped;
@@ -19,14 +20,9 @@ public class Bug : MonoBehaviour
 	{
 
 		// bug.CrossFadeAlpha(0,10,true) ;
-		score.AddScore(1);
-		despawnBug();
+		//score.AddScore(1);
+		Destroy(gameObject);
 		//Debug.Log("bug gone");
-	}
-
-	public void despawnBug()
-	{
-		gameObject.SetActive(false);
 	}
 
 }

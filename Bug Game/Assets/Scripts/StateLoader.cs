@@ -33,12 +33,22 @@ public class StateLoader : MonoBehaviour
 		StartCoroutine(LoadState(SceneManager.GetActiveScene().buildIndex - 1));
 	}
 
+	public void RestartState()
+	{
+		SceneManager.LoadScene("TutorialScene");
+	}
+
+	public void HomeState()
+	{
+		SceneManager.LoadScene("TitleScene");
+	}
+
 	//Creating coroutine??
 	IEnumerator LoadState(int sceneIndex)
 	{
 		switch (sceneIndex)
 		{
-			case 2:
+			case 2://Tutorial Scene
 				transition.SetTrigger("Ready");
 				break;
 		}
