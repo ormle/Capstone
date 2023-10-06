@@ -15,6 +15,6 @@ public class HomeButton : MonoBehaviour
 
     
     void TapGesture_Tapped (object sender, System.EventArgs e) {
-        SceneManager.LoadScene("TitleScene");
+        SceneManager.LoadScene(0);
     }
 }

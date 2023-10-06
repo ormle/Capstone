@@ -15,6 +15,6 @@ public class RestartButton : MonoBehaviour
 
     
     void TapGesture_Tapped (object sender, System.EventArgs e) {
-        SceneManager.LoadScene("TutorialScene");
+        SceneManager.LoadScene(1);
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class bugSpawner : MonoBehaviour
 {
-    public GameObject bug;
+  /*  public GameObject bug;
     public Vector3 spawnValues;
     public float spawnWait = 2;
     public float spawnMostWait = 5;
@@ -38,5 +38,5 @@ public class bugSpawner : MonoBehaviour
 
             yield return new WaitForSeconds(spawnWait);
         }
-    }
+    }*/
 }
