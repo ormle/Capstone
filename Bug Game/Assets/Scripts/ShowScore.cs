@@ -19,11 +19,11 @@ public class ShowScore : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if (Input.GetKey("up"))
+		/*if (Input.GetKey("up"))
 		{
             scoreValue++;
 			textElement.text = textValue + scoreValue;
-		}
+		}*/
 	}
 
     public void AddScore(int points) { 
