@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MoveForward : MonoBehaviour
 {
-    public float speed = 10.0f; //Speed of bug
+    public float speed = 3.0f; //Speed of bug
     // Start is called before the first frame update
     void Start()
     {

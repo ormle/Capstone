@@ -4,13 +4,8 @@ using UnityEngine;
 
 public class DestroyOutOfBounds : MonoBehaviour
 {
-    /*
-     * As of right now (Oct 5 as i write this)
-     * Only applies to left and right bounds
-     * ***Needs to be edited to include bugs that enter top+bottom bounds***
-     */
-    private float boundLR = 1800.0f; //-left, +right
-    private float boundTB = 1200.0f; //-bottom, +top
+    private float boundLR = 1750; //-left, +right
+    private float boundTB = 1075; //-bottom, +top
 
     // Start is called before the first frame update
     void Start()
@@ -21,13 +16,23 @@ public class DestroyOutOfBounds : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.x > boundLR || transform.position.x < -boundLR)
-        {//Left-Right bound
+        if (transform.position.x < -boundLR)
+        {//Left bound
             Destroy(gameObject);
         }
-        else if (transform.position.y > boundTB || transform.position.y < -boundTB)
-        {//Top-Bottom bound
+        else if (transform.position.x > boundLR)
+        {//Right bound
+            Destroy(gameObject);
+            Debug.Log("DESTROYED!");
+        }
+        else if (transform.position.y > boundTB)
+        {//Top bound
             Destroy(gameObject);
         }
+        else if (transform.position.y < -boundTB)
+        {//Bottom bound
+            Destroy(gameObject);
+        }
+        
     }
 }

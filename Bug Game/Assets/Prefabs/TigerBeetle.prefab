@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 4130612791964109715}
   - component: {fileID: 4130612791964109716}
   - component: {fileID: 4130612791964109714}
-  - component: {fileID: 4705781148684422827}
-  - component: {fileID: 5072415427580392712}
+  - component: {fileID: 3821583612679295248}
+  - component: {fileID: 334297552609562257}
   m_Layer: 3
   m_Name: TigerBeetle
   m_TagString: Canvas
@@ -31,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4130612791964109736}
   m_LocalRotation: {x: 0, y: -0, z: 0.7071068, w: -0.7071068}
-  m_LocalPosition: {x: -1041, y: -487.79517, z: -17280}
+  m_LocalPosition: {x: -1041, y: -487.79517, z: 0}
   m_LocalScale: {x: 19.2, y: 19.2, z: 19.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -123,7 +123,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a878a6ff128243dfb1d89ca0273f059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugMode: 0
   OnStateChange:
     m_PersistentCalls:
       m_Calls: []
@@ -160,7 +159,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6676800e92b06412d99f17a9b0ed1e9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: {fileID: 0}
 --- !u!61 &4130612791964109714
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -187,19 +185,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 16.2, y: 15.97}
   m_EdgeRadius: 0
---- !u!114 &4705781148684422827
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4130612791964109736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9dd3fa4ac04a5494b84798ea2148e059, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &5072415427580392712
+--- !u!114 &3821583612679295248
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -212,3 +198,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+--- !u!114 &334297552609562257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4130612791964109736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dd3fa4ac04a5494b84798ea2148e059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
