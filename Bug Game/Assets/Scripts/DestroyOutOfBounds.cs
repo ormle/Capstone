@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class DestroyOutOfBounds : MonoBehaviour
 {
-    private float boundLR = 9; //-left, +right
-    private float boundTB = 999; //-bottom, +top
+    private float boundLR = 11; //-left, +right
+    private float boundTB = 11; //-bottom, +top
 
     private bool isDestroyed = false; // Flag to prevent multiple destroy calls
 
@@ -21,7 +21,7 @@ public class DestroyOutOfBounds : MonoBehaviour
         if (!isDestroyed)
         {
             // Debug.Log("X position: " + transform.position.x);
-            if (transform.position.x < -9)
+            if (transform.position.x < -11)
             {// Left bound
                 Destroy(gameObject);
                 isDestroyed = true;
