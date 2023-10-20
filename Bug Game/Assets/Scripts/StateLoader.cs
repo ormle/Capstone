@@ -35,11 +35,13 @@ public class StateLoader : MonoBehaviour
 
 	public void RestartState()
 	{
+		ScoreManager.instance.ResetScore();
 		SceneManager.LoadScene("TutorialScene");
 	}
 
 	public void HomeState()
 	{
+		ScoreManager.instance.ResetScore();
 		SceneManager.LoadScene("TitleScene");
 	}
 
