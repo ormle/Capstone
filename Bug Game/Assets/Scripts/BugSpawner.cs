@@ -21,10 +21,10 @@ public class BugSpawner : MonoBehaviour
     - Offscreen up Y position = 200
     - Offscreen down Y position = -700
     */
-    private float spawnRange_RL_YL = 700;   //Y lower limit where they can spawn
+    private float spawnRange_RL_YL = 900;   //Y lower limit where they can spawn
     private float spawnRange_RL_YU = 200;   //Y upper limit where they can spawn
-    private float spawnPos_RL_X = 1749;     //X position where they spawn, Not a range
-
+    private float spawnPos_RL_X = 2020;     //X position where they spawn, Not a range
+    
     /*
     ===================
     =Up <--> Down Bugs=
@@ -40,6 +40,7 @@ public class BugSpawner : MonoBehaviour
     void Start()
     {
         InvokeRepeating("SpawnRandomBug", startDelay, spawnInterval);
+        InvokeRepeating("SpawnRandomBugR", startDelay, spawnInterval);
     }
 
     // Update is called once per frame
@@ -47,7 +48,7 @@ public class BugSpawner : MonoBehaviour
     {
     }
 
-    void SpawnRandomBug()
+    void SpawnRandomBug_original()
     {
         //Randomly generate bug index
         //Pick a random bug to spawn
@@ -62,4 +63,111 @@ public class BugSpawner : MonoBehaviour
         Debug.Log(spawnPos);
         
     }
+
+    void SpawnRandomBug()
+    {
+        // Randomly generate bug index
+        int bugIndex = Random.Range(0, bugPrefabs.Length);
+        
+        // Randomly generate spawn location
+        Vector3 spawnPos = new Vector3(-spawnPos_RL_X, 
+            Random.Range(-spawnRange_RL_YL, spawnRange_RL_YU), 0);
+    
+        // Spawn bug
+        GameObject bug = Instantiate(bugPrefabs[bugIndex], spawnPos, 
+            bugPrefabs[bugIndex].transform.rotation);
+        bug.transform.SetParent(transform, false);
+    
+        // Access the MoveForward script on the spawned bug and change its speed
+        MoveForward moveScript = bug.GetComponent<MoveForward>();
+        if (moveScript != null)
+        {
+            
+            moveScript.speed = 0.9f; // Set to the desired speed value?
+        }
+    
+        Debug.Log(spawnPos);
+        
+        // Start a coroutine to control bug movement
+        StartCoroutine(LadybugMovement(bug, moveScript));
+
+    }
+    
+    // USES Ladybug Coroutine!
+    void SpawnRandomBugR()
+    {
+        float spawnPos_RL_X = -2020; // Change this value to make bugs spawn on the right
+        
+        // Randomly generate bug index
+        int bugIndex = Random.Range(0, bugPrefabs.Length);
+        
+        // Randomly generate spawn location
+        Vector3 spawnPos = new Vector3(-spawnPos_RL_X, Random.Range(-spawnRange_RL_YL, spawnRange_RL_YU), 0);
+        
+        // Calculate a random rotation angle between 88 and 92 degrees.
+        float randomRotation = Random.Range(88f, 92f);
+        
+        // Spawn bug with the calculated random rotation angle.
+        GameObject bug = Instantiate(bugPrefabs[bugIndex], spawnPos, Quaternion.Euler(0f, 0f, randomRotation));
+        bug.transform.SetParent(transform, false);
+        
+        // Access the MoveForward script on the spawned bug and change its speed
+        MoveForward moveScript = bug.GetComponent<MoveForward>();
+        if (moveScript != null)
+        {
+            // Calculate a random speed variation between -0.3 and 0.3, adding it to the base speed of 0.9.
+            float speedVariation = Random.Range(-0.3f, 0.3f);
+            moveScript.speed = 0.9f + speedVariation;
+        }
+        
+        Debug.Log(spawnPos);
+    
+        // Start a coroutine to control bug movement
+        StartCoroutine(LadybugMovement(bug, moveScript));
+    }
+    
+    // This is a special coroutine for the bug
+    // Think of it like its dance choreography
+   IEnumerator LadybugMovement(GameObject bug, MoveForward moveScript)
+    {
+        // Move for a random duration between 2 and 9 seconds
+        float moveDuration = Random.Range(1f, 9f);
+        yield return new WaitForSeconds(moveDuration);
+    
+        // Stop moving for a random duration between 3 and 9 seconds
+        float stopDuration = Random.Range(0.2f, 3f);
+        moveScript.speed = 0f;
+        yield return new WaitForSeconds(stopDuration);
+        
+        // Rotate to a random angle between 0 and 270 degrees
+        float randomRotation = Random.Range(0f, 270f);
+        bug.transform.rotation = Quaternion.Euler(0f, 0f, randomRotation);
+    
+        // Resume moving with a random speed between 0.9 and 1.6
+        float randomSpeed = Random.Range(0.9f, 1.6f);
+        moveScript.speed = randomSpeed;
+    
+        // You can repeat this cycle as needed
+        StartCoroutine(LadybugMovement(bug, moveScript));
+    }
+
+    
+        IEnumerator AlternateMovement2(GameObject bug, MoveForward moveScript)
+    {
+        // Move for 3 seconds
+        yield return new WaitForSeconds(3f);
+    
+        // Stop moving for 3 seconds
+        moveScript.speed = 0f;
+        yield return new WaitForSeconds(3f);
+    
+        // Resume moving (you can adjust the speed here)
+        moveScript.speed = 0.9f;
+    
+        // You can repeat this cycle as needed
+        StartCoroutine(AlternateMovement2(bug, moveScript));
+    }
+
+    
+
 }
