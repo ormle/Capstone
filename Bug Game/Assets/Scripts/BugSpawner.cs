@@ -21,10 +21,10 @@ public class BugSpawner : MonoBehaviour
     - Offscreen up Y position = 200
     - Offscreen down Y position = -700
     */
-    private float spawnRange_RL_YL = 700;   //Y lower limit where they can spawn
+    private float spawnRange_RL_YL = 900;   //Y lower limit where they can spawn
     private float spawnRange_RL_YU = 200;   //Y upper limit where they can spawn
-    private float spawnPos_RL_X = 1749;     //X position where they spawn, Not a range
-
+    private float spawnPos_RL_X = 2020;     //X position where they spawn, Not a range
+    
     /*
     ===================
     =Up <--> Down Bugs=
@@ -47,7 +47,7 @@ public class BugSpawner : MonoBehaviour
     {
     }
 
-    void SpawnRandomBug()
+    void SpawnRandomBug_original()
     {
         //Randomly generate bug index
         //Pick a random bug to spawn
@@ -62,4 +62,32 @@ public class BugSpawner : MonoBehaviour
         Debug.Log(spawnPos);
         
     }
+
+    void SpawnRandomBug()
+    {
+        // Randomly generate bug index
+        int bugIndex = Random.Range(0, bugPrefabs.Length);
+        
+        // Randomly generate spawn location
+        Vector3 spawnPos = new Vector3(-spawnPos_RL_X, 
+            Random.Range(-spawnRange_RL_YL, spawnRange_RL_YU), 0);
+    
+        // Spawn bug
+        GameObject bug = Instantiate(bugPrefabs[bugIndex], spawnPos, 
+            bugPrefabs[bugIndex].transform.rotation);
+        bug.transform.SetParent(transform, false);
+    
+        // Access the MoveForward script on the spawned bug and change its speed
+        MoveForward moveScript = bug.GetComponent<MoveForward>();
+        if (moveScript != null)
+        {
+            
+            moveScript.speed = 0.9f; // Set to the desired speed value?
+        }
+    
+        // Debug.Log(spawnPos);
+
+    }
+    
+
 }
