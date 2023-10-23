@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class StateLoader : MonoBehaviour
 {
 	public Animator transition;
-
 	public float transitionTime = 1f;
 
 	// Update is called once per frame

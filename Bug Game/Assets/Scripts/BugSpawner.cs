@@ -125,24 +125,29 @@ public class BugSpawner : MonoBehaviour
         // Start a coroutine to control bug movement
         StartCoroutine(LadybugMovement(bug, moveScript));
     }
-    
+
     // This is a special coroutine for the bug
     // Think of it like its dance choreography
-   IEnumerator LadybugMovement(GameObject bug, MoveForward moveScript)
+    IEnumerator LadybugMovement(GameObject bug, MoveForward moveScript)
     {
         // Move for a random duration between 2 and 9 seconds
         float moveDuration = Random.Range(1f, 9f);
         yield return new WaitForSeconds(moveDuration);
-    
+
         // Stop moving for a random duration between 3 and 9 seconds
         float stopDuration = Random.Range(0.2f, 3f);
         moveScript.speed = 0f;
         yield return new WaitForSeconds(stopDuration);
-        
+
+        //if statement is fix for accessing deleted object error - yron
+
+        if (bug)
+        { 
         // Rotate to a random angle between 0 and 270 degrees
         float randomRotation = Random.Range(0f, 270f);
         bug.transform.rotation = Quaternion.Euler(0f, 0f, randomRotation);
-    
+        }
+
         // Resume moving with a random speed between 0.9 and 1.6
         float randomSpeed = Random.Range(0.9f, 1.6f);
         moveScript.speed = randomSpeed;
