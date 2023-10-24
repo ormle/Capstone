@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class countdownTimer : MonoBehaviour
 {
     float currentTime = 0f;
-    float startingTime = 10f;
+    float startingTime = 45f;
 	public string textValue = "Timer: ";
 	public TextMeshProUGUI textElement;
 	public StateLoader stateloader;

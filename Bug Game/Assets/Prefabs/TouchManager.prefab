@@ -48,7 +48,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dd4c394fe06f4ea49e03aaa5e7a8190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugMode: 0
   OnFrameStart:
     m_PersistentCalls:
       m_Calls: []
@@ -82,6 +81,7 @@ MonoBehaviour:
   sendMessageTarget: {fileID: 0}
   useUnityEvents: 0
   layers:
+  - {fileID: 0}
   - {fileID: 0}
 --- !u!114 &3494526013400818725
 MonoBehaviour:
