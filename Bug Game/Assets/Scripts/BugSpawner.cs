@@ -5,7 +5,8 @@ using UnityEngine;
 public class BugSpawner : MonoBehaviour
 { 
     //List of bug prefabs to go through and spawn randomly
-    public GameObject[] bugPrefabs;
+    public GameObject[] beetlePrefabs, ladybugPrefabs, beePrefabs,
+        dragonflyPrefabs, butterflyPrefabs;
     public float startDelay = 3f;    //So bugs spawn after countdown
     public float spawnInterval = 2.5f; //Spawn every 2.5 seconds
 
@@ -29,18 +30,23 @@ public class BugSpawner : MonoBehaviour
     ===================
     =Up <--> Down Bugs=
     ===================
-    - Offscreen up/down Y position = 1100 (+ up, - down) 
+    - Offscreen up/down Y position = 1070 (+ up, - down) 
     - Offscreen left/right x range position = 1450 (- left, + right)
      */
-    //private float spawnPos_UD_Y = 1070;   //Not a range, either + or -
-    //private float spawnRange_UD_X = 1450; //X ranges where they can spawn
+    private float spawnPos_UD_Y = 1070;   //Not a range, either + or -
+    private float spawnRange_UD_X = 1450; //X ranges where they can spawn
 
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnRandomBug", startDelay, spawnInterval);
-        InvokeRepeating("SpawnRandomBugR", startDelay, spawnInterval);
+        //Beetle
+        InvokeRepeating("SpawnRandomBeetle", startDelay, spawnInterval);
+        //Ladybug
+        InvokeRepeating("SpawnRandomLadybug", startDelay, spawnInterval);
+        //Bee
+        InvokeRepeating("SpawnRandomBee", startDelay, spawnInterval);
+       
     }
 
     // Update is called once per frame
@@ -52,30 +58,30 @@ public class BugSpawner : MonoBehaviour
     {
         //Randomly generate bug index
         //Pick a random bug to spawn
-        int bugIndex = Random.Range(0, bugPrefabs.Length);
+        int bugIndex = Random.Range(0, beetlePrefabs.Length);
         //Randomly generate spawn location
         Vector3 spawnPos = new Vector3(-spawnPos_RL_X,
             Random.Range(-spawnRange_RL_YL, spawnRange_RL_YU), 0);
         //Spawn bug
-        GameObject bug = Instantiate(bugPrefabs[bugIndex], spawnPos,
-            bugPrefabs[bugIndex].transform.rotation);
+        GameObject bug = Instantiate(beetlePrefabs[bugIndex], spawnPos,
+            beetlePrefabs[bugIndex].transform.rotation);
         bug.transform.SetParent(transform, false);
         Debug.Log(spawnPos);
         
     }
 
-    void SpawnRandomBug()
+    void SpawnRandomBeetle()
     {
         // Randomly generate bug index
-        int bugIndex = Random.Range(0, bugPrefabs.Length);
+        int bugIndex = Random.Range(0, beetlePrefabs.Length);
         
         // Randomly generate spawn location
         Vector3 spawnPos = new Vector3(-spawnPos_RL_X, 
             Random.Range(-spawnRange_RL_YL, spawnRange_RL_YU), 0);
     
         // Spawn bug
-        GameObject bug = Instantiate(bugPrefabs[bugIndex], spawnPos, 
-            bugPrefabs[bugIndex].transform.rotation);
+        GameObject bug = Instantiate(beetlePrefabs[bugIndex], spawnPos, 
+            beetlePrefabs[bugIndex].transform.rotation);
         bug.transform.SetParent(transform, false);
     
         // Access the MoveForward script on the spawned bug and change its speed
@@ -94,12 +100,12 @@ public class BugSpawner : MonoBehaviour
     }
     
     // USES Ladybug Coroutine!
-    void SpawnRandomBugR()
+    void SpawnRandomLadybug()
     {
         float spawnPos_RL_X = -2020; // Change this value to make bugs spawn on the right
         
         // Randomly generate bug index
-        int bugIndex = Random.Range(0, bugPrefabs.Length);
+        int bugIndex = Random.Range(0, beetlePrefabs.Length);
         
         // Randomly generate spawn location
         Vector3 spawnPos = new Vector3(-spawnPos_RL_X, Random.Range(-spawnRange_RL_YL, spawnRange_RL_YU), 0);
@@ -108,7 +114,7 @@ public class BugSpawner : MonoBehaviour
         float randomRotation = Random.Range(88f, 92f);
         
         // Spawn bug with the calculated random rotation angle.
-        GameObject bug = Instantiate(bugPrefabs[bugIndex], spawnPos, Quaternion.Euler(0f, 0f, randomRotation));
+        GameObject bug = Instantiate(beetlePrefabs[bugIndex], spawnPos, Quaternion.Euler(0f, 0f, randomRotation));
         bug.transform.SetParent(transform, false);
         
         // Access the MoveForward script on the spawned bug and change its speed
@@ -173,6 +179,72 @@ public class BugSpawner : MonoBehaviour
         StartCoroutine(AlternateMovement2(bug, moveScript));
     }
 
+    void SpawnRandomBee()
+    {
+        //0 = Spawn from top, 1 spawn from bottom
+        int randUpDown = Random.Range(0, 1);
+        float upDown = spawnPos_UD_Y;
+        if (randUpDown == 1)
+        {
+            upDown = spawnPos_UD_Y * -1;
+        }
+
+        // Randomly generate bug index
+        int bugIndex = Random.Range(0, beePrefabs.Length);
+
+        // Randomly generate spawn location
+        Vector3 spawnPos = new Vector3(Random.Range(-spawnRange_UD_X, spawnRange_UD_X),
+            upDown, 0);
+
+        // Calculate a random rotation angle between 88 and 92 degrees.
+        float randomRotation = Random.Range(88f, 92f);
+
+        // Spawn bug with the calculated random rotation angle.
+        GameObject bug = Instantiate(beePrefabs[bugIndex], spawnPos, Quaternion.Euler(0f, 0f, randomRotation));
+        bug.transform.SetParent(transform, false);
+
+        // Access the MoveForward script on the spawned bug and change its speed
+        MoveForward moveScript = bug.GetComponent<MoveForward>();
+        if (moveScript != null)
+        {
+            // Calculate a random speed variation between -0.3 and 0.3, adding it to the base speed of 0.9.
+            float speedVariation = Random.Range(-0.3f, 0.3f);
+            moveScript.speed = 0.9f + speedVariation;
+        }
+
+        Debug.Log(spawnPos);
+
+        // Start a coroutine to control bug movement
+        StartCoroutine(BeeMovement(bug, moveScript));
+    }
+
+    IEnumerator BeeMovement(GameObject bug, MoveForward moveScript)
+    {//Right now is a copy of LadyBugMovement as a skeleton/guide
+        // Move for a random duration between 2 and 9 seconds
+        float moveDuration = Random.Range(1f, 9f);
+        yield return new WaitForSeconds(moveDuration);
+
+        // Stop moving for a random duration between 3 and 9 seconds
+        float stopDuration = Random.Range(0.2f, 3f);
+        moveScript.speed = 0f;
+        yield return new WaitForSeconds(stopDuration);
+
+        //if statement is fix for accessing deleted object error - yron
+
+        if (bug)
+        {
+            // Rotate to a random angle between 0 and 270 degrees
+            float randomRotation = Random.Range(0f, 270f);
+            bug.transform.rotation = Quaternion.Euler(0f, 0f, randomRotation);
+        }
+
+        // Resume moving with a random speed between 0.9 and 1.6
+        float randomSpeed = Random.Range(0.9f, 1.6f);
+        moveScript.speed = randomSpeed;
+
+        // You can repeat this cycle as needed
+        StartCoroutine(BeeMovement(bug, moveScript));
+    }
     
 
 }
