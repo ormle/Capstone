@@ -44,7 +44,7 @@ public class BugSpawner : MonoBehaviour
      * control points
      * 5 different routes to randomly choose from
      */
-    public Transform[] Routes;
+    public Transform[] beeRoutes;
     public List<Transform> Paths;
 
 
@@ -204,12 +204,12 @@ public class BugSpawner : MonoBehaviour
         int bugIndex = Random.Range(0, beePrefabs.Length);
 
         //Pick a random route to follow
-        int route = Random.Range(0, Routes.Length);
+        int route = Random.Range(0, beeRoutes.Length);
         //Put all paths in an array to give to the movement script
         Paths = new List<Transform>();
-        for (int i = 0; i < Routes[route].childCount; i++)
+        for (int i = 0; i < beeRoutes[route].childCount; i++)
         {
-            Paths.Add(Routes[route].GetChild(i));
+            Paths.Add(beeRoutes[route].GetChild(i));
             //Debug.Log("Name: " + Paths[i].name);
         }
 
