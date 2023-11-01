@@ -7667,7 +7667,8 @@ MonoBehaviour:
   beetlePrefabs:
   - {fileID: 4130612791964109736, guid: 61aa824f3a1fc43fc9c5052d28591a77, type: 3}
   ladybugPrefabs: []
-  beePrefabs: []
+  beePrefabs:
+  - {fileID: 1797201628634343148, guid: f4d9d99970f4e4bd7982ea12d49fb0e7, type: 3}
   dragonflyPrefabs: []
   butterflyPrefabs: []
   startDelay: 3
