@@ -5291,11 +5291,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4130612791964109718, guid: 61aa824f3a1fc43fc9c5052d28591a77, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1780
+      value: -1785
       objectReference: {fileID: 0}
     - target: {fileID: 4130612791964109718, guid: 61aa824f3a1fc43fc9c5052d28591a77, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -522
+      value: 282
       objectReference: {fileID: 0}
     - target: {fileID: 4130612791964109718, guid: 61aa824f3a1fc43fc9c5052d28591a77, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5332,6 +5332,10 @@ PrefabInstance:
     - target: {fileID: 4130612791964109736, guid: 61aa824f3a1fc43fc9c5052d28591a77, type: 3}
       propertyPath: m_Name
       value: TigerBeetle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130612791964109736, guid: 61aa824f3a1fc43fc9c5052d28591a77, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61aa824f3a1fc43fc9c5052d28591a77, type: 3}
@@ -7660,10 +7664,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bc554015f067f24e9b7389c5a6019b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  beetlePrefabs: []
+  beetlePrefabs:
+  - {fileID: 4130612791964109736, guid: 61aa824f3a1fc43fc9c5052d28591a77, type: 3}
   ladybugPrefabs: []
-  beePrefabs:
-  - {fileID: 1797201628634343148, guid: f4d9d99970f4e4bd7982ea12d49fb0e7, type: 3}
+  beePrefabs: []
   dragonflyPrefabs: []
   butterflyPrefabs: []
   startDelay: 3
@@ -7674,7 +7678,6 @@ MonoBehaviour:
   - {fileID: 1895679912}
   - {fileID: 955639821}
   - {fileID: 1997288327}
-  Paths: []
 --- !u!114 &2076549119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8225,6 +8228,10 @@ PrefabInstance:
     - target: {fileID: 1797201628634343148, guid: f4d9d99970f4e4bd7982ea12d49fb0e7, type: 3}
       propertyPath: m_Name
       value: BeeTemp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1797201628634343148, guid: f4d9d99970f4e4bd7982ea12d49fb0e7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1797201628634343151, guid: f4d9d99970f4e4bd7982ea12d49fb0e7, type: 3}
       propertyPath: m_Pivot.x

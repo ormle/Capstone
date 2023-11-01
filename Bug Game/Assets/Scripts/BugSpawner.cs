@@ -22,9 +22,9 @@ public class BugSpawner : MonoBehaviour
     - Offscreen up Y position = 200
     - Offscreen down Y position = -700
     */
-    private float spawnRange_RL_YL = 900;   //Y lower limit where they can spawn
+    private float spawnRange_RL_YL = 850;   //Y lower limit where they can spawn
     private float spawnRange_RL_YU = 200;   //Y upper limit where they can spawn
-    private float spawnPos_RL_X = 2020;     //X position where they spawn, Not a range
+    private float spawnPos_RL_X = 1780;     //X position where they spawn, Not a range
     
     /*
     ===================
@@ -45,7 +45,7 @@ public class BugSpawner : MonoBehaviour
      * 5 different routes to randomly choose from
      */
     public Transform[] beeRoutes;
-    public List<Transform> Paths;
+    private List<Transform> Paths;
 
 
     // Start is called before the first frame update
@@ -93,22 +93,35 @@ public class BugSpawner : MonoBehaviour
     {
         // Randomly generate bug index
         int bugIndex = Random.Range(0, beetlePrefabs.Length);
+
+        //Randomly choose to spawn from left or right
+        int lr = Random.Range(0,2);//0 = Left, 1 = Right
+        // Calculate a random rotation angle between 88 and 92 degrees.
+        float randomRotation;
+        if (lr == 0) {
+            spawnPos_RL_X *= -1;
+            randomRotation = Random.Range(88f, 92f);
+        }
+        else { randomRotation = Random.Range(-88f, -92f); }
         
         // Randomly generate spawn location
-        Vector3 spawnPos = new Vector3(-spawnPos_RL_X, 
+        Vector3 spawnPos = new Vector3(spawnPos_RL_X, 
             Random.Range(-spawnRange_RL_YL, spawnRange_RL_YU), 0);
-    
+
         // Spawn bug
-        GameObject bug = Instantiate(beetlePrefabs[bugIndex], spawnPos, 
-            beetlePrefabs[bugIndex].transform.rotation);
+        GameObject bug = Instantiate(beetlePrefabs[bugIndex], spawnPos,
+            Quaternion.Euler(0f, 0f, randomRotation));
         bug.transform.SetParent(transform, false);
     
         // Access the MoveForward script on the spawned bug and change its speed
         MoveForward moveScript = bug.GetComponent<MoveForward>();
         if (moveScript != null)
         {
-            
-            moveScript.speed = 0.9f; // Set to the desired speed value?
+            // Calculate a random speed variation between -0.3 and 0.3, adding it to the base speed of 0.9.
+            float speedVariation = Random.Range(-0.3f, 0.3f);
+            moveScript.speed = 0.9f + speedVariation;
+            //Set so it moves towards screen depending on side its spawned on
+            moveScript.leftright = lr;
         }
     
         Debug.Log(spawnPos);
@@ -121,16 +134,21 @@ public class BugSpawner : MonoBehaviour
     // USES Ladybug Coroutine!
     void SpawnRandomLadybug()
     {
-        float spawnPos_RL_X = -2020; // Change this value to make bugs spawn on the right
         
         // Randomly generate bug index
         int bugIndex = Random.Range(0, beetlePrefabs.Length);
-        
+        //Randomly choose to spawn from left or right
+        int lr = Random.Range(0, 1);//0 = Left, 1 = Right
+        float randomRotation;
+        if (lr == 0)
+        {
+            spawnPos_RL_X *= -1;
+            randomRotation = Random.Range(88f, 92f);
+        }
+        else { randomRotation = Random.Range(-88f, -92f); }
+
         // Randomly generate spawn location
         Vector3 spawnPos = new Vector3(-spawnPos_RL_X, Random.Range(-spawnRange_RL_YL, spawnRange_RL_YU), 0);
-        
-        // Calculate a random rotation angle between 88 and 92 degrees.
-        float randomRotation = Random.Range(88f, 92f);
         
         // Spawn bug with the calculated random rotation angle.
         GameObject bug = Instantiate(beetlePrefabs[bugIndex], spawnPos, Quaternion.Euler(0f, 0f, randomRotation));
