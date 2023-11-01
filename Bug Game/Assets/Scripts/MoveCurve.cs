@@ -48,7 +48,11 @@ public class MoveCurve : MonoBehaviour
             //Need to figureout how to make bug rotate to look forward
             //At this point
             //This was a suggestion in youtube comments, but only works for 3D
-            //transform.LookAt(bugPos); 
+            //transform.LookAt(bugPos);
+            Vector3 direction = new Vector3(bugPos.x - transform.position.x,
+                bugPos.y - transform.position.y, 0f);
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, angle - 90);
 
             transform.position = bugPos;//Move bug position
             yield return new WaitForEndOfFrame();
