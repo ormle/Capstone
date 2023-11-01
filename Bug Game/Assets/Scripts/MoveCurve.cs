@@ -45,10 +45,11 @@ public class MoveCurve : MonoBehaviour
                 3 * (1 - tParam) * Mathf.Pow(tParam, 2) * p2 +
                 Mathf.Pow(tParam, 3) * p3;
 
-            //Need to figureout how to make bug rotate to look forward
-            //At this point
-            //This was a suggestion in youtube comments, but only works for 3D
-            //transform.LookAt(bugPos); 
+            //Make bug face towards direction of curve/route
+            Vector3 direction = new Vector3(bugPos.x - transform.position.x,
+                bugPos.y - transform.position.y, 0f);
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, angle - 90);
 
             transform.position = bugPos;//Move bug position
             yield return new WaitForEndOfFrame();
