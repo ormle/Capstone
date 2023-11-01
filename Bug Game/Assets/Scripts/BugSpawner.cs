@@ -10,6 +10,7 @@ public class BugSpawner : MonoBehaviour
     public float startDelay = 3f;    //So bugs spawn after countdown
     public float spawnInterval = 2.5f; //Spawn every 2.5 seconds
 
+
     /*
     SpawnrangeY determines the Y range they can spawn in
     (The up and down range they can spawn from, use +- of this float)
@@ -65,6 +66,11 @@ public class BugSpawner : MonoBehaviour
         {
             //Bee
             InvokeRepeating("SpawnRandomBee", startDelay, spawnInterval);
+        }
+        if (beePrefabs.Length > 0)
+        {
+            // Dragonfly
+            InvokeRepeating("SpawnRandomDragonfly", startDelay, spawnInterval);
         }
     }
 
@@ -169,6 +175,50 @@ public class BugSpawner : MonoBehaviour
         StartCoroutine(LadybugMovement(bug, moveScript));
     }
 
+    void SpawnRandomDragonfly()
+    {
+        // Randomly generate bug index
+        int bugIndex = Random.Range(0, dragonflyPrefabs.Length);
+
+        //Randomly choose to spawn from left or right
+        int lr = Random.Range(0,2);//0 = Left, 1 = Right
+        // Calculate a random rotation angle between 88 and 92 degrees.
+        float originalRotation;
+
+        if (lr == 0) {
+            spawnPos_RL_X *= -1;
+            originalRotation = Random.Range(88f, 92f);
+        }
+        else { originalRotation = Random.Range(-88f, -92f); }
+        
+        // Randomly generate spawn location
+        Vector3 spawnPos = new Vector3(spawnPos_RL_X, 
+            Random.Range(-spawnRange_RL_YL, spawnRange_RL_YU), 0);
+
+        // Spawn bug
+        GameObject bug = Instantiate(dragonflyPrefabs[bugIndex], spawnPos,
+            Quaternion.Euler(0f, 0f, originalRotation));
+        bug.transform.SetParent(transform, false);
+    
+        // Access the MoveForward script on the spawned bug and change its speed
+        MoveZigZag moveScript = bug.GetComponent<MoveZigZag>();
+        if (moveScript != null)
+        {
+            // Calculate a random speed variation between -0.3 and 0.3, adding it to the base speed of 0.9.
+            //float speedVariation = Random.Range(-0.3f, 0.3f);
+            moveScript.speed = 7f ;
+            //Set so it moves towards screen depending on side its spawned on
+            moveScript.leftright = lr;
+        }
+    
+        Debug.Log(spawnPos);
+        
+        // Start a coroutine to control bug movement
+        StartCoroutine(DragonflyMovement(bug, moveScript, originalRotation));
+
+    }
+
+
     // This is a special coroutine for the bug
     // Think of it like its dance choreography
     IEnumerator LadybugMovement(GameObject bug, MoveForward moveScript)
@@ -199,6 +249,44 @@ public class BugSpawner : MonoBehaviour
         StartCoroutine(LadybugMovement(bug, moveScript));
     }
 
+    IEnumerator DragonflyMovement(GameObject bug, MoveZigZag moveScript, float originalRotation)
+    {
+        // Move for a random duration between 2 and 5 seconds
+        float moveDuration = Random.Range(1f, 3f);
+        yield return new WaitForSeconds(moveDuration);
+
+        // Stop moving for a random duration between 3 and 9 seconds
+        float stopDuration = Random.Range(0.2f, 2f);
+        moveScript.speed = 0f;
+        yield return new WaitForSeconds(stopDuration);
+
+        //if statement is fix for accessing deleted object error - yron
+
+        if (bug) { 
+            // Rotate to a random angle between 0 and 270 degrees
+            float randomRotation = Random.Range(0f, 180f);
+
+            // get the difference between the two to see how much u need to rotate
+            float differenceInRotation = System.Math.Abs(originalRotation - randomRotation) ;
+
+            for (float i = 0; i<differenceInRotation; i++) {
+                bug.transform.rotation = Quaternion.Euler(0f, 0f, originalRotation - i);
+
+                
+                moveScript.speed = 0f;
+                yield return new WaitForSeconds(0.008f);
+            }
+        originalRotation = randomRotation ;
+        }
+        
+        
+        // Resume moving with a random speed between 0.9 and 1.6
+        //float randomSpeed = Random.Range(0.9f, 1.6f);
+        moveScript.speed = 7f;
+    
+        // You can repeat this cycle as needed
+        StartCoroutine(DragonflyMovement(bug, moveScript, originalRotation));
+    }
     
         IEnumerator AlternateMovement2(GameObject bug, MoveForward moveScript)
     {
