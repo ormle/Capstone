@@ -72,7 +72,12 @@ public class BugSpawner : MonoBehaviour
             // Dragonfly
             InvokeRepeating("SpawnRandomDragonfly", startDelay, spawnInterval);
         }
-    }
+		if (butterflyPrefabs.Length > 0)
+		{
+			// Dragonfly
+			InvokeRepeating("SpawnRandomButterfly", startDelay, spawnInterval);
+		}
+	}
 
     // Update is called once per frame
     void Update()
@@ -342,6 +347,45 @@ public class BugSpawner : MonoBehaviour
             moveScript.bugPos = spawnPos;//Give script bug position
         }
     }
-    
+
+	void SpawnRandomButterfly()
+	{
+		// Randomly generate bug index for skin
+		int bugIndex = Random.Range(0, butterflyPrefabs.Length);
+
+		//Pick a random route to follow
+		int route = Random.Range(0, beeRoutes.Length);
+		//Put all paths in an array to give to the movement script
+		Paths = new List<Transform>();
+		for (int i = 0; i < beeRoutes[route].childCount; i++)
+		{
+			Paths.Add(beeRoutes[route].GetChild(i));
+			//Debug.Log("Name: " + Paths[i].name);
+		}
+
+		//Get spawn position from location of first path
+
+		//Debug.Log("Something: " + Paths[0].GetChild(0).localPosition);
+		Vector2 spawnPos = Paths[0].GetChild(0).localPosition;
+		//Debug.Log("Name: " + Paths[0].GetChild(0).name);
+		//Debug.Log("SpawnPos: " + spawnPos);
+
+		// Spawn bug with the calculated random rotation angle.
+		//Currently rotation angle is 270deg
+		GameObject bug = Instantiate(butterflyPrefabs[bugIndex], spawnPos, Quaternion.Euler(0f, 0f, 0));
+		bug.transform.SetParent(transform, false);
+
+		// Access the MoveForward script on the spawned bug and change its speed and spawnPos
+		MoveCurve moveScript = bug.GetComponent<MoveCurve>();
+		if (moveScript != null)
+		{
+			// Calculate a random speed variation between 0.2 and 0.4, adding it to the base speed of 0.15.
+			float speedVariation = Random.Range(0.2f, 0.4f);
+			moveScript.Speed += speedVariation;
+			moveScript.Paths = Paths;    //Give the script the route
+			moveScript.bugPos = spawnPos;//Give script bug position
+		}
+	}
+
 
 }
