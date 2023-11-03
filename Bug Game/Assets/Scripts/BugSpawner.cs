@@ -67,7 +67,7 @@ public class BugSpawner : MonoBehaviour
             //Bee
             InvokeRepeating("SpawnRandomBee", startDelay, spawnInterval);
         }
-        if (dragonflyPrefabs.Length > 0)
+        if (beePrefabs.Length > 0)
         {
             // Dragonfly
             InvokeRepeating("SpawnRandomDragonfly", startDelay, spawnInterval);
@@ -96,7 +96,7 @@ public class BugSpawner : MonoBehaviour
         GameObject bug = Instantiate(beetlePrefabs[bugIndex], spawnPos,
             beetlePrefabs[bugIndex].transform.rotation);
         bug.transform.SetParent(transform, false);
-        //Debug.Log(spawnPos);
+        Debug.Log(spawnPos);
         
     }
 
@@ -135,7 +135,7 @@ public class BugSpawner : MonoBehaviour
             moveScript.leftright = lr;
         }
     
-        //Debug.Log(spawnPos);
+        Debug.Log(spawnPos);
         
         // Start a coroutine to control bug movement
         StartCoroutine(LadybugMovement(bug, moveScript));
@@ -174,7 +174,7 @@ public class BugSpawner : MonoBehaviour
             moveScript.speed = 0.9f + speedVariation;
         }
         
-        //Debug.Log(spawnPos);
+        Debug.Log(spawnPos);
     
         // Start a coroutine to control bug movement
         StartCoroutine(LadybugMovement(bug, moveScript));
@@ -216,7 +216,7 @@ public class BugSpawner : MonoBehaviour
             moveScript.leftright = lr;
         }
     
-        //Debug.Log(spawnPos);
+        Debug.Log(spawnPos);
         
         // Start a coroutine to control bug movement
         StartCoroutine(DragonflyMovement(bug, moveScript, originalRotation));
