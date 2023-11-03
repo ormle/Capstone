@@ -13,27 +13,32 @@ public class TappedBug : MonoBehaviour
 
         // Find the 'boink' AudioSource by name in the scene
         boinkAudioSource = GameObject.Find("boink").GetComponent<AudioSource>();
+        
+
     }
 
     void TapGesture_Tapped(object sender, EventArgs e)
     {
         ScoreManager scoreManager = ScoreManager.instance;
-        if (scoreManager != null)
+        if (Time.timeScale == 1)//Only be able to tap bugs during game time
         {
-            scoreManager.AddScore(1); // Change this value for special bugs
-            ShowScore showScore = FindObjectOfType<ShowScore>();
-            if (showScore != null)
+            if (scoreManager != null)
             {
-                showScore.UpdateScoreDisplay();
+                scoreManager.AddScore(1); // Change this value for special bugs
+                ShowScore showScore = FindObjectOfType<ShowScore>();
+                if (showScore != null)
+                {
+                    showScore.UpdateScoreDisplay();
+                }
             }
-        }
 
-        // Play the 'boink' audio clip
-        if (boinkAudioSource != null)
-        {
-            boinkAudioSource.Play();
-        }
+            // Play the 'boink' audio clip
+            if (boinkAudioSource != null)
+            {
+                boinkAudioSource.Play();
+            }
 
-        Destroy(gameObject);
+            Destroy(gameObject);
+        }
     }
 }
