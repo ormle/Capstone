@@ -46,6 +46,11 @@ public class TappedBug : MonoBehaviour
                 boinkAudioSource.Play();
             }
 
+            if (gameObject.name.Contains("TigerBeetle"))
+            {
+                gameObject.GetComponent<Animator>().Play("TB_FadeOut");
+            }
+
             Destroy(gameObject);
         }
     }
