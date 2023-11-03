@@ -48,9 +48,19 @@ public class BugSpawner : MonoBehaviour
     public Transform[] beeRoutes;
     private List<Transform> Paths;
 
+	/*
+	* Butterfly Routes
+	* Routes is an array of routes where each route is an array of
+	* paths which contain an array of control points (confusing yes)
+	* Paths are the sections of a route that a butterfly follows based on the 
+	* control points
+	* 5 different routes to randomly choose from
+	*/
+	public Transform[] butterflyRoutes;
 
-    // Start is called before the first frame update
-    void Start()
+
+	// Start is called before the first frame update
+	void Start()
     {
         //Beetle
         if (beetlePrefabs.Length > 0)
@@ -74,7 +84,7 @@ public class BugSpawner : MonoBehaviour
         }
 		if (butterflyPrefabs.Length > 0)
 		{
-			// Dragonfly
+			// Butterfly
 			InvokeRepeating("SpawnRandomButterfly", startDelay, spawnInterval);
 		}
 	}
@@ -354,12 +364,12 @@ public class BugSpawner : MonoBehaviour
 		int bugIndex = Random.Range(0, butterflyPrefabs.Length);
 
 		//Pick a random route to follow
-		int route = Random.Range(0, beeRoutes.Length);
+		int route = Random.Range(0, butterflyRoutes.Length);
 		//Put all paths in an array to give to the movement script
 		Paths = new List<Transform>();
-		for (int i = 0; i < beeRoutes[route].childCount; i++)
+		for (int i = 0; i < butterflyRoutes[route].childCount; i++)
 		{
-			Paths.Add(beeRoutes[route].GetChild(i));
+			Paths.Add(butterflyRoutes[route].GetChild(i));
 			//Debug.Log("Name: " + Paths[i].name);
 		}
 
