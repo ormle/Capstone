@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class countdownTimer : MonoBehaviour
 {
-    float currentTime = 0f;
+    public float currentTime = 0f;
     float startingTime = 20f;
 	public string textValue = "Timer: ";
 	public TextMeshProUGUI textElement;
@@ -29,11 +29,10 @@ public class countdownTimer : MonoBehaviour
     {
         if (currentTime == 3f) { 
 			//3 2 1
-			Debug.Log("here");
+			//Debug.Log("here");
         }
 		currentTime -= 1 * Time.deltaTime;
-		Debug.Log("current time:" + currentTime);
-
+		//Debug.Log("current time:" + currentTime);
 		timerBar.fillAmount = currentTime / startingTime;
 		textElement.text = textValue + ((int)System.Math.Round(currentTime)).ToString();
 		if (currentTime <= 13) {

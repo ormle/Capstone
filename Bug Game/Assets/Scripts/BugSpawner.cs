@@ -332,7 +332,6 @@ public class BugSpawner : MonoBehaviour
         //Debug.Log("SpawnPos: " + spawnPos);
 
         // Spawn bug with the calculated random rotation angle.
-        //Currently rotation angle is 270deg
         GameObject bug = Instantiate(beePrefabs[bugIndex], spawnPos, Quaternion.Euler(0f, 0f, 0));
         bug.transform.SetParent(transform, false);
 
