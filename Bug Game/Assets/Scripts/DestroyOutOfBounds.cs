@@ -30,7 +30,7 @@ public class DestroyOutOfBounds : MonoBehaviour
             {// Right bound
                 Destroy(gameObject);
                 isDestroyed = true;
-                //Debug.Log("DESTROYED! RIGHT");
+                Debug.Log("DESTROYED! RIGHT");
             }
             else if (transform.position.y > boundTB)
             {// Top bound
