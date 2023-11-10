@@ -32,7 +32,6 @@ public class countdownTimer : MonoBehaviour
 			Debug.Log("here");
         }
 		currentTime -= 1 * Time.deltaTime;
-		Debug.Log("current time:" + currentTime);
 
 		timerBar.fillAmount = currentTime / startingTime;
 		textElement.text = textValue + ((int)System.Math.Round(currentTime)).ToString();

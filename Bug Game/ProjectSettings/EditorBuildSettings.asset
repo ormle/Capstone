@@ -13,10 +13,7 @@ EditorBuildSettings:
     guid: 31bc9fc8fa86d1243b8cf474f56381d9
   - enabled: 1
     path: Assets/Scenes/GameplayScene.unity
-    guid: 2c6cb7a9184e8aa40bae05cfd010dfc5
-  - enabled: 0
-    path: Assets/Scenes/PlayStateScene.unity
-    guid: 8eab79ebdd2f21a4d95822a4fb5efbae
+    guid: 0c754613d628ead4789f0b638c0a55aa
   - enabled: 1
     path: Assets/Scenes/GameEndScene.unity
     guid: f5a9a5964d782f842b264e3ce2af9f75

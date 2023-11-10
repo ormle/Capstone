@@ -19,13 +19,29 @@ public class TappedBug : MonoBehaviour
 
     void TapGesture_Tapped(object sender, EventArgs e)
     {
-        ScoreManager scoreManager = ScoreManager.instance;
+		ScoreManager scoreManager = ScoreManager.instance;
         if (Time.timeScale == 1)//Only be able to tap bugs during game time
         {
             if (scoreManager != null)
             {
-                scoreManager.AddScore(1); // Change this value for special bugs
-                ShowScore showScore = FindObjectOfType<ShowScore>();
+                //Debug.Log(this.instance);
+                if (this.name == "TigerBeetle" ||  this.name == "TigerBeetle(Clone)")
+                {
+                    scoreManager.AddScore(1);
+				}
+				if (this.name == "ButterflyTemp" || this.name == "ButterflyTemp(Clone)")
+				{
+                    scoreManager.AddScore(5);
+				}
+				if (this.name == "DragonflyTest" || this.name == "DragonflyTest(Clone)")
+				{
+                    scoreManager.AddScore(8);
+				}
+				if (this.name == "BeeTemp" || this.name == "BeeTemp(Clone)")
+				{
+                    scoreManager.AddScore(10);
+				}
+				ShowScore showScore = FindObjectOfType<ShowScore>();
                 if (showScore != null)
                 {
                     showScore.UpdateScoreDisplay();
