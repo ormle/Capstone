@@ -86,9 +86,13 @@ public class TappedBug : MonoBehaviour
         Renderer rend = gameObject.transform.GetComponent<Renderer>(); //obj
         Color matColor = rend.material.color; // get color
         float alphaValue = rend.material.color.a; // alpha val
+        Quaternion rot = gameObject.transform.rotation; //To keep rotation when fading
         
         while (rend.material.color.a > 0f) // while not transparent
         {
+            //Not sure why but they go to prefab rotation when fading so
+            //this line here to keep them facing same direction
+            gameObject.transform.rotation = rot; //Keep rotation when fading
             alphaValue -= Time.deltaTime / fadeSpeed; // decrease tranparency
             rend.material.color = new Color(matColor.r, matColor.g, matColor.b, alphaValue);// change color
             yield return null;
