@@ -77,7 +77,7 @@ public class BugSpawner : MonoBehaviour
             //Bee
             InvokeRepeating("SpawnRandomBee", startDelay, spawnInterval);
         }
-        if (beePrefabs.Length > 0)
+        if (dragonflyPrefabs.Length > 0)
         {
             // Dragonfly
             InvokeRepeating("SpawnRandomDragonfly", startDelay, spawnInterval);
@@ -350,8 +350,8 @@ public class BugSpawner : MonoBehaviour
         MoveCurve moveScript = bug.GetComponent<MoveCurve>();
         if (moveScript != null)
         {
-            // Calculate a random speed variation between 0.2 and 0.4, adding it to the base speed of 0.15.
-            float speedVariation = Random.Range(0.2f, 0.4f);
+            // Calculate a random speed variation between 0.1 and 0.25, adding it to the base speed of 0.15.
+            float speedVariation = Random.Range(0.1f, 0.25f);
             moveScript.Speed += speedVariation;
             moveScript.Paths = Paths;    //Give the script the route
             moveScript.bugPos = spawnPos;//Give script bug position

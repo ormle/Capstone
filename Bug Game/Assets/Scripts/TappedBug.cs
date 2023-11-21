@@ -8,6 +8,7 @@ public class TappedBug : MonoBehaviour
 {
     private AudioSource boinkAudioSource; // Reference to the 'boink' AudioSource
     public bool destroyGameObject = true; // MAKE
+    public GameObject pointPrefab;
 
     void Start()
     {
@@ -32,8 +33,8 @@ public class TappedBug : MonoBehaviour
                 //Debug.Log(this.instance);
                 if (this.name == "TigerBeetle" ||  this.name == "TigerBeetle(Clone)")
                 {
-                    
-                    GetComponent<MoveForward>().speed = 0f; // stops bug movement
+                    this.GetComponent<MoveForward>().speed = 0f; // stops bug movement
+                    StartCoroutine(ShowPoint(transform.position)); // Point animation coroutine
                     StartCoroutine(FadeOut(1f)); // fadeOut Coroutine
                     scoreManager.AddScore(1);
                     
@@ -43,21 +44,24 @@ public class TappedBug : MonoBehaviour
 				}
 				if (this.name == "ButterflyTemp" || this.name == "ButterflyTemp(Clone)")
 				{
-                    GetComponent<MoveCurve>().Speed = 0f;
+                    this.GetComponent<MoveCurve>().Speed = 0f;
+                    StartCoroutine(ShowPoint(transform.position));
                     scoreManager.AddScore(5);
                     StartCoroutine(FadeOut(1f));
                     //Destroy(gameObject);
 				}
 				if (this.name == "DragonflyTest" || this.name == "DragonflyTest(Clone)")
 				{
-                    GetComponent<MoveZigZag>().speed = 0f;
+                    this.GetComponent<MoveZigZag>().speed = 0f;
+                    StartCoroutine(ShowPoint(transform.position));
                     scoreManager.AddScore(8);
                     StartCoroutine(FadeOut(1f));
                     //Destroy(gameObject);
 				}
 				if (this.name == "BeeTemp" || this.name == "BeeTemp(Clone)")
 				{
-                    GetComponent<MoveCurve>().Speed = 0f;
+                    this.GetComponent<MoveCurve>().Speed = 0f;
+                    StartCoroutine(ShowPoint(transform.position));
                     scoreManager.AddScore(10);
                     StartCoroutine(FadeOut(1f));
                     //Destroy(gameObject);
@@ -87,7 +91,7 @@ public class TappedBug : MonoBehaviour
         Color matColor = rend.material.color; // get color
         float alphaValue = rend.material.color.a; // alpha val
         Quaternion rot = gameObject.transform.rotation; //To keep rotation when fading
-        
+
         while (rend.material.color.a > 0f) // while not transparent
         {
             //Not sure why but they go to prefab rotation when fading so
@@ -102,5 +106,15 @@ public class TappedBug : MonoBehaviour
         if (destroyGameObject){
             Destroy(gameObject); // destroy if box checked
         }
+    }
+
+    IEnumerator ShowPoint(Vector3 position)
+    {
+
+        GameObject p = Instantiate(pointPrefab, position,
+            Quaternion.identity);
+        p.transform.SetParent(transform, false);
+
+        yield return null;
     }
 }

@@ -132,6 +132,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6676800e92b06412d99f17a9b0ed1e9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroyGameObject: 1
+  pointPrefab: {fileID: 6038576338924188053, guid: f9a604d9cd6974e0bada9e1545ee1250, type: 3}
 --- !u!114 &6663083087295012107
 MonoBehaviour:
   m_ObjectHideFlags: 0
