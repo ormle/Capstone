@@ -351,7 +351,7 @@ public class BugSpawner : MonoBehaviour
         if (moveScript != null)
         {
             // Calculate a random speed variation between 0.1 and 0.25, adding it to the base speed of 0.15.
-            float speedVariation = Random.Range(0.1f, 0.25f);
+            float speedVariation = Random.Range(0.1f, 0.3f);
             moveScript.Speed += speedVariation;
             moveScript.Paths = Paths;    //Give the script the route
             moveScript.bugPos = spawnPos;//Give script bug position
@@ -390,7 +390,7 @@ public class BugSpawner : MonoBehaviour
 		if (moveScript != null)
 		{
 			// Calculate a random speed variation between 0.2 and 0.4, adding it to the base speed of 0.15.
-			float speedVariation = Random.Range(0.2f, 0.4f);
+			float speedVariation = Random.Range(0.15f, 0.3f);
 			moveScript.Speed += speedVariation;
 			moveScript.Paths = Paths;    //Give the script the route
 			moveScript.bugPos = spawnPos;//Give script bug position
