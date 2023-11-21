@@ -37,6 +37,7 @@ public class TappedBug : MonoBehaviour
                     StartCoroutine(ShowPoint(transform.position)); // Point animation coroutine
                     StartCoroutine(FadeOut(1f)); // fadeOut Coroutine
                     scoreManager.AddScore(1);
+		    scoremanager.BugCounter(2);
                     
                     //Debug.Log("anim should happe");
                     //Destroy(this.gameObject);
@@ -47,6 +48,7 @@ public class TappedBug : MonoBehaviour
                     this.GetComponent<MoveCurve>().Speed = 0f;
                     StartCoroutine(ShowPoint(transform.position));
                     scoreManager.AddScore(5);
+		    scoremanager.BugCounter(4);
                     StartCoroutine(FadeOut(1f));
                     //Destroy(gameObject);
 				}
@@ -55,6 +57,7 @@ public class TappedBug : MonoBehaviour
                     this.GetComponent<MoveZigZag>().speed = 0f;
                     StartCoroutine(ShowPoint(transform.position));
                     scoreManager.AddScore(8);
+		    scoremanager.BugCounter(5);
                     StartCoroutine(FadeOut(1f));
                     //Destroy(gameObject);
 				}
@@ -63,6 +66,7 @@ public class TappedBug : MonoBehaviour
                     this.GetComponent<MoveCurve>().Speed = 0f;
                     StartCoroutine(ShowPoint(transform.position));
                     scoreManager.AddScore(10);
+		    scoremanager.BugCounter(3);
                     StartCoroutine(FadeOut(1f));
                     //Destroy(gameObject);
 				}
