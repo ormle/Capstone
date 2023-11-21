@@ -26,11 +26,11 @@ public class DestroyOutOfBounds : MonoBehaviour
                 Destroy(gameObject);
                 isDestroyed = true;
             }
-            else if (transform.position.x > boundLR + 0.4)
+            else if (transform.position.x > boundLR + 0.6)
             {// Right bound
                 Destroy(gameObject);
                 isDestroyed = true;
-                Debug.Log("DESTROYED! RIGHT");
+                //Debug.Log("DESTROYED! RIGHT");
             }
             else if (transform.position.y > boundTB)
             {// Top bound

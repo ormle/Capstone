@@ -20,7 +20,7 @@ public class ShowScore : MonoBehaviour
         if (scoreManager != null)
         {
             textElement.text = textValue + scoreManager.score.ToString();
-            Debug.Log("Score updated to: " + scoreManager.score);
+            //Debug.Log("Score updated to: " + scoreManager.score);
         }
     }
 

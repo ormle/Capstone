@@ -2442,21 +2442,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: DragonflyTest
       objectReference: {fileID: 0}
+    - target: {fileID: 7526764403576537792, guid: e8f6e714330cc456ca29bc212ba150a7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9219639469733350175, guid: e8f6e714330cc456ca29bc212ba150a7, type: 3}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9219639469733350175, guid: e8f6e714330cc456ca29bc212ba150a7, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 32.447437
-      objectReference: {fileID: 0}
-    - target: {fileID: 9219639469733350175, guid: e8f6e714330cc456ca29bc212ba150a7, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 32.8573
-      objectReference: {fileID: 0}
-    - target: {fileID: 9219639469733350175, guid: e8f6e714330cc456ca29bc212ba150a7, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 170.77599
       objectReference: {fileID: 0}
     - target: {fileID: 9219639469733350175, guid: e8f6e714330cc456ca29bc212ba150a7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3279,104 +3271,11 @@ MonoBehaviour:
   windows7Mouse: 1
   universalWindowsMouse: 1
   emulateSecondMousePointer: 1
---- !u!1 &497114129 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7526764403576537792, guid: e8f6e714330cc456ca29bc212ba150a7, type: 3}
-  m_PrefabInstance: {fileID: 379024833}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &497114130 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9219639469733350175, guid: e8f6e714330cc456ca29bc212ba150a7, type: 3}
   m_PrefabInstance: {fileID: 379024833}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &497114131
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 497114129}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a51515ef419fb44829b4422a3a4db493, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 10
-  leftright: 0
---- !u!114 &497114132
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 497114129}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6676800e92b06412d99f17a9b0ed1e9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &497114133
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 497114129}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a878a6ff128243dfb1d89ca0273f059, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnStateChange:
-    m_PersistentCalls:
-      m_Calls: []
-  basicEditor: 1
-  generalProps: 0
-  limitsProps: 0
-  advancedProps: 0
-  minPointers: 0
-  maxPointers: 0
-  useSendMessage: 0
-  sendStateChangeMessages: 0
-  sendMessageTarget: {fileID: 0}
-  useUnityEvents: 0
-  sendStateChangeEvents: 0
-  requireGestureToFail: {fileID: 0}
-  friendlyGestures: []
-  OnTap:
-    m_PersistentCalls:
-      m_Calls: []
-  numberOfTapsRequired: 1
-  timeLimit: Infinity
-  distanceLimit: Infinity
-  combinePointers: 0
-  combinePointersInterval: 0.3
---- !u!61 &497114134
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 497114129}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 9.52, y: 7.87}
-    newSize: {x: 9.52, y: 7.87}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 9.52, y: 7.87}
-  m_EdgeRadius: 0
 --- !u!1 &501488558
 GameObject:
   m_ObjectHideFlags: 0
@@ -7456,50 +7355,6 @@ RectTransform:
   m_AnchoredPosition: {x: 957, y: 894}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1105562814
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1105562816}
-  - component: {fileID: 1105562815}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1105562815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1105562814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db1799a31ac584b0f98438e1bbd62eff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1105562816
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1105562814}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.441296, y: -2.0395772, z: 69.3809}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1111128047
 GameObject:
   m_ObjectHideFlags: 0
@@ -8758,7 +8613,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4130612791964109736, guid: 61aa824f3a1fc43fc9c5052d28591a77, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61aa824f3a1fc43fc9c5052d28591a77, type: 3}
@@ -13269,7 +13124,7 @@ MonoBehaviour:
   beePrefabs:
   - {fileID: 1797201628634343148, guid: f4d9d99970f4e4bd7982ea12d49fb0e7, type: 3}
   dragonflyPrefabs:
-  - {fileID: 497114129}
+  - {fileID: 7526764403576537792, guid: e8f6e714330cc456ca29bc212ba150a7, type: 3}
   butterflyPrefabs:
   - {fileID: 6663083087295012105, guid: 6870f6cda59f20e4b9ae0d2493839d45, type: 3}
   startDelay: 3
@@ -14020,6 +13875,10 @@ PrefabInstance:
     - target: {fileID: 6663083087295012105, guid: 6870f6cda59f20e4b9ae0d2493839d45, type: 3}
       propertyPath: m_Name
       value: ButterflyTemp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6663083087295012105, guid: 6870f6cda59f20e4b9ae0d2493839d45, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6663083087295012106, guid: 6870f6cda59f20e4b9ae0d2493839d45, type: 3}
       propertyPath: m_Pivot.x

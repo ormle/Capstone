@@ -159,6 +159,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6676800e92b06412d99f17a9b0ed1e9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroyGameObject: 1
+  pointPrefab: {fileID: 3417537836312399220, guid: f636a94f932fd40199ebe6af3a4ce0ce, type: 3}
 --- !u!61 &4130612791964109714
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -198,6 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  leftright: 0
 --- !u!114 &334297552609562257
 MonoBehaviour:
   m_ObjectHideFlags: 0
