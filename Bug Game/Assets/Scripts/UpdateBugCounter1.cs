@@ -14,7 +14,17 @@ public class UpdateBugCounter1 : MonoBehaviour
     {
         // Retrieve the score from PlayerPrefs
         int bugCount = PlayerPrefs.GetInt("Butterfly", 0);
-
-        textElement.text = textValue + bugCount;
+        
+        if (bugCount == 0) {
+            
+            textElement.text = "???";
+            
+            }
+            
+        else {
+            
+            textElement.text = textValue + bugCount;
+            
+            }
     }
 }
