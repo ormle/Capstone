@@ -14,7 +14,7 @@ public class ShowScoreGameOver : MonoBehaviour
     void Start()
     {
         // Retrieve the score from PlayerPrefs
-        int scoreValue = PlayerPrefs.GetInt("Score", 0);
+        int scoreValue = PlayerPrefs.GetInt("Total", 0);
 
         textElement.text = textValue + scoreValue + " " + bugsTXT;
     }
@@ -24,7 +24,7 @@ public class ShowScoreGameOver : MonoBehaviour
     {
         if (Input.GetKey("up"))
         {
-            int scoreValue = PlayerPrefs.GetInt("Score", 0); // Retrieve the score from PlayerPrefs
+            int scoreValue = PlayerPrefs.GetInt("Total", 0); // Retrieve the score from PlayerPrefs
             scoreValue++; // Increment the score
             textElement.text = textValue + scoreValue + " " + bugsTXT;
         }
