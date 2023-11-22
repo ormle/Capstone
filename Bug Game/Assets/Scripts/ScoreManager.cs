@@ -10,6 +10,7 @@ public class ScoreManager : MonoBehaviour
     public int bee = 0;
     public int butterfly = 0;
     public int dragonfly = 0;
+    public int total = 0;
 
     private void Awake()
     {
@@ -30,6 +31,7 @@ public class ScoreManager : MonoBehaviour
         bee = PlayerPrefs.GetInt("Bee", 0);
         butterfly = PlayerPrefs.GetInt("Butterfly", 0);
         dragonfly = PlayerPrefs.GetInt("Dragonfly", 0);
+        total = PlayerPrefs.GetInt("Total", 0);
     }
     
     public void BugCounter(int bug)
@@ -37,26 +39,31 @@ public class ScoreManager : MonoBehaviour
         if (bug == 1) 
             {
                 ladybug += 1;
+                total +=1;
             }
         
         else if (bug == 2) 
             {
                 beetle += 1;
+                total +=1;
             }
             
         else if (bug == 3) 
             {
                 bee += 1;
+                total +=1;
             }
             
         else if (bug == 4) 
             {
                 butterfly += 1;
+                total +=1;
             }
             
         else if (bug == 5) 
             {
                 dragonfly += 1;
+                total +=1;
             }
 
         SaveScore();
@@ -78,6 +85,7 @@ public class ScoreManager : MonoBehaviour
         PlayerPrefs.SetInt("Bee", bee);
         PlayerPrefs.SetInt("Butterfly", butterfly);
         PlayerPrefs.SetInt("Dragonfly", dragonfly);
+        PlayerPrefs.SetInt("Total", total);
         
         PlayerPrefs.Save();
     }
@@ -90,6 +98,7 @@ public class ScoreManager : MonoBehaviour
         bee = 0;
         butterfly = 0;
         dragonfly = 0;
+        total = 0;
         SaveScore(); // Save the reset score to PlayerPrefs
     }
 

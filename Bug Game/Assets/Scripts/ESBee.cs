@@ -16,7 +16,7 @@ public class ESBee : MonoBehaviour
         
         if (bee > 0) {
             
-            textElement.text += ("Bee x " + bee + "\n");
+            textElement.text += ("Bee x" + bee + "\n");
             
         }
         
