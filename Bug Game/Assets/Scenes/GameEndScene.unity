@@ -819,7 +819,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d6dee266ece3e4480b43767ee406fee2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ea79449e7929d441684ec5484d8b10fb, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1883,16 +1883,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e01987335fc7243a29f2f3b6f9ffcdbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Paths:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  Paths: []
   spawnScript: {fileID: 0}
   bugPos: {x: -4.3298073, y: 2.7051802}
   Speed: 0.36048403
