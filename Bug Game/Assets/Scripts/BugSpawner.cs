@@ -78,19 +78,19 @@ public class BugSpawner : MonoBehaviour
         {
             new WaitForSeconds(startDelay);
             //Bee
-            StartCoroutine("SpawnRandomBee", spawnInterval);
+            StartCoroutine("SpawnRandomBee", spawnInterval + .3f);
         }
         if (dragonflyPrefabs.Length > 0)
         {
             // Dragonfly
             new WaitForSeconds(startDelay);
-            StartCoroutine("SpawnRandomDragonfly", spawnInterval);
+            StartCoroutine("SpawnRandomDragonfly", spawnInterval + 0.1f);
         }
 		if (butterflyPrefabs.Length > 0)
 		{
             // Butterfly
             new WaitForSeconds(startDelay);
-            StartCoroutine("SpawnRandomButterfly", spawnInterval);
+            StartCoroutine("SpawnRandomButterfly", spawnInterval + 0.2f);
         }
 	}
 
