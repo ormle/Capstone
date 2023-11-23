@@ -52,7 +52,9 @@ public class TappedBug : MonoBehaviour
                     StartCoroutine(FadeOut(1f));
                     //Destroy(gameObject);
 				}
-				if (this.name == "DragonflyTest" || this.name == "DragonflyTest(Clone)")
+				if (this.name == "DragonflyTest" || this.name == "DragonflyTest(Clone)" 
+                || this.name == "CherryMeadow" || this.name == "CherryMeadow(Clone)"
+                || this.name == "BlueDarner" || this.name == "BlueDarner(Clone)")
 				{
                     this.GetComponent<MoveZigZag>().speed = 0f;
                     StartCoroutine(ShowPoint(transform.position));
