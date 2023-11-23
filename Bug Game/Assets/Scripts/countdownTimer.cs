@@ -44,6 +44,7 @@ public class countdownTimer : MonoBehaviour
 		{
 			// Debug.Log("current time:" + currentTime);
 			timesUp.enabled = true;
+			timesUp.GetComponent<Animator>().Play("Default.TimesUp");
 			banner.SetActive(false);
 			Time.timeScale = 0;
 			//	TIMES UP animation
