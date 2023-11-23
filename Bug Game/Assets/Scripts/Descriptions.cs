@@ -31,6 +31,7 @@ public class Descriptions : MonoBehaviour
         }
         else if (movingDown)
         {
+            moveSpeed = 2;
             MoveDown();
         }
     }
@@ -38,12 +39,24 @@ public class Descriptions : MonoBehaviour
     void MoveUp()
     {
         // Move the object upward along the Y-axis
-        
-        // if (transform < -450) { // if transform is less than max height
-        
-        transform.Translate(Vector3.up * moveSpeed * Time.deltaTime);
-        //}
+        float newY = transform.GetComponent<RectTransform>().anchoredPosition.y + (Vector3.up.y * moveSpeed * Time.deltaTime);
+    
+        // Set the maximum height (adjust this value as needed)
+        float maxHeight = -450f;
+    
+        // Check if the new position exceeds the maximum height
+        if (newY < maxHeight)
+        {
+            // Limit the position to the maximum height
+            newY = maxHeight;
+            moveSpeed = 0;
+        }
+    
+        // Apply the new position
+        transform.GetComponent<RectTransform>().anchoredPosition = new Vector2(transform.GetComponent<RectTransform>().anchoredPosition.x, newY);
     }
+
+
     
 
     void MoveDown()
