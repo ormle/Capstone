@@ -71,7 +71,7 @@ public class BugSpawner : MonoBehaviour
             StartCoroutine("SpawnRandomBeetle", spawnInterval - 0.35f);
         }
         //Ladybug
-        if (ladybugPrefabs.Length > 0)
+        if (beetlePrefabs.Length > 0)
         {
             new WaitForSeconds(startDelay);
             StartCoroutine("SpawnRandomLadybug", spawnInterval - 0.25);
