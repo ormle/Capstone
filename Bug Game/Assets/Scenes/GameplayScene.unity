@@ -12657,8 +12657,8 @@ MonoBehaviour:
   - {fileID: 1797201628634343148, guid: f4d9d99970f4e4bd7982ea12d49fb0e7, type: 3}
   dragonflyPrefabs:
   - {fileID: 7526764403576537792, guid: e8f6e714330cc456ca29bc212ba150a7, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 4431115937744587292, guid: 73f28125fdcca4976834ca1034d7c592, type: 3}
+  - {fileID: 7546437292722619851, guid: 81c051061bd0c4c31b6492a21adc1202, type: 3}
   butterflyPrefabs:
   - {fileID: 6663083087295012105, guid: 6870f6cda59f20e4b9ae0d2493839d45, type: 3}
   startDelay: 3

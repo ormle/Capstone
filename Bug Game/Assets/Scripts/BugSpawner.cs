@@ -68,31 +68,31 @@ public class BugSpawner : MonoBehaviour
         if (beetlePrefabs.Length > 0)
         {
             new WaitForSeconds(startDelay);
-            StartCoroutine("SpawnRandomBeetle", spawnInterval);
+            StartCoroutine("SpawnRandomBeetle", spawnInterval - 0.35f);
         }
         //Ladybug
         if (ladybugPrefabs.Length > 0)
         {
             new WaitForSeconds(startDelay);
-            StartCoroutine("SpawnRandomLadybug", spawnInterval);
+            StartCoroutine("SpawnRandomLadybug", spawnInterval - 0.25);
         }
         if (beePrefabs.Length > 0)
         {
             new WaitForSeconds(startDelay);
             //Bee
-            StartCoroutine("SpawnRandomBee", spawnInterval + .3f);
+            StartCoroutine("SpawnRandomBee", spawnInterval + .35f);
         }
         if (dragonflyPrefabs.Length > 0)
         {
             // Dragonfly
             new WaitForSeconds(startDelay);
-            StartCoroutine("SpawnRandomDragonfly", spawnInterval - 0.2f);
+            StartCoroutine("SpawnRandomDragonfly", spawnInterval - 0.3f);
         }
 		if (butterflyPrefabs.Length > 0)
 		{
             // Butterfly
             new WaitForSeconds(startDelay);
-            StartCoroutine("SpawnRandomButterfly", spawnInterval + 0.2f);
+            StartCoroutine("SpawnRandomButterfly", spawnInterval + 0.25f);
         }
 	}
 
@@ -170,7 +170,7 @@ public class BugSpawner : MonoBehaviour
                 moveScript.leftright = lr;
             }
 
-            Debug.Log(spawnPos);
+            //Debug.Log(spawnPos);
 
             // Start a coroutine to control bug movement
             StartCoroutine(LadybugMovement(bug, moveScript));
