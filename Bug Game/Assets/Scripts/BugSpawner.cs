@@ -59,6 +59,8 @@ public class BugSpawner : MonoBehaviour
 	public Transform[] butterflyRoutes;
 
 
+    public IEnumerator Dragonmove;
+
 	// Start is called before the first frame update
 	void Start()
     {
@@ -84,7 +86,7 @@ public class BugSpawner : MonoBehaviour
         {
             // Dragonfly
             new WaitForSeconds(startDelay);
-            StartCoroutine("SpawnRandomDragonfly", spawnInterval + 0.1f);
+            StartCoroutine("SpawnRandomDragonfly", spawnInterval - 0.2f);
         }
 		if (butterflyPrefabs.Length > 0)
 		{
@@ -256,10 +258,15 @@ public class BugSpawner : MonoBehaviour
                 moveScript.leftright = lr;
             }
 
-            Debug.Log(spawnPos);
+            //Debug.Log(spawnPos);
+            //Put coroutine into a variable
+            Dragonmove = DragonflyMovement(bug, moveScript, originalRotation);
+            //Give variable to tapscript
+            TappedBug tapScript = bug.GetComponent<TappedBug>();
+            if (tapScript != null) { tapScript.Dmove = Dragonmove; }
 
             // Start a coroutine to control bug movement
-            StartCoroutine(DragonflyMovement(bug, moveScript, originalRotation));
+            StartCoroutine(Dragonmove);
         }
 
     }
@@ -315,7 +322,9 @@ public class BugSpawner : MonoBehaviour
             // get the difference between the two to see how much u need to rotate
             float differenceInRotation = System.Math.Abs(originalRotation - randomRotation) ;
 
+            bool rotating = true;
             for (float i = 0; i<differenceInRotation; i++) {
+                if (rotating == false) { break; }
                 bug.transform.rotation = Quaternion.Euler(0f, 0f, originalRotation - i);
 
                 

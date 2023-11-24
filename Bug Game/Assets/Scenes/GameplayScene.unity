@@ -3807,6 +3807,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CherryMeadow
       objectReference: {fileID: 0}
+    - target: {fileID: 4431115937744587292, guid: 73f28125fdcca4976834ca1034d7c592, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8184140649013403122, guid: 73f28125fdcca4976834ca1034d7c592, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -4311,6 +4315,10 @@ PrefabInstance:
     - target: {fileID: 7546437292722619851, guid: 81c051061bd0c4c31b6492a21adc1202, type: 3}
       propertyPath: m_Name
       value: BlueDarner
+      objectReference: {fileID: 0}
+    - target: {fileID: 7546437292722619851, guid: 81c051061bd0c4c31b6492a21adc1202, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81c051061bd0c4c31b6492a21adc1202, type: 3}
