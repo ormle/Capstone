@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 4130612791964109736}
   m_LocalRotation: {x: 0, y: -0, z: 0.7071068, w: -0.7071068}
   m_LocalPosition: {x: -1041, y: -487.79517, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 20, y: 20, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyGameObject: 1
-  pointPrefab: {fileID: 3417537836312399220, guid: f636a94f932fd40199ebe6af3a4ce0ce, type: 3}
+  pointPrefab: {fileID: 863809004841650151, guid: c8cd5cfea97c34c11ab017c605733276, type: 3}
 --- !u!61 &4130612791964109714
 BoxCollider2D:
   m_ObjectHideFlags: 0
