@@ -10,6 +10,10 @@ public class TappedBug : MonoBehaviour
     public bool destroyGameObject = true; // MAKE
     public GameObject pointPrefab;
 
+    private BugSpawner bugSpawner; // Reference BugSpawner for spawn script
+
+    public IEnumerator Dmove; // Dragonfly mvmt coroutine
+
     void Start()
     {
         TapGesture tapGesture = this.GetComponent<TapGesture>();
@@ -18,8 +22,8 @@ public class TappedBug : MonoBehaviour
 
         // Find the 'boink' AudioSource by name in the scene
         boinkAudioSource = GameObject.Find("boink").GetComponent<AudioSource>();
-        
-
+        // Find BugSpawner by name in scene
+        bugSpawner = GameObject.Find("BugSpawner").GetComponent<BugSpawner>();
     }
 
     void TapGesture_Tapped(object sender, EventArgs e)
@@ -34,51 +38,66 @@ public class TappedBug : MonoBehaviour
                 if (this.name == "TigerBeetle" ||  this.name == "TigerBeetle(Clone)")
                 {
                     this.GetComponent<MoveForward>().speed = 0f; // stops bug movement
-                    StartCoroutine(ShowPoint(transform.position)); // Point animation coroutine
-                    StartCoroutine(FadeOut(1f)); // fadeOut Coroutine
                     scoreManager.AddScore(1);
 		    scoreManager.BugCounter(2);
-                    
+                    //fadeOut Coroutine
+                    StartCoroutine(FadeOut(1f));
+                    //showPoint Coroutine
+                    StartCoroutine(ShowPoint(transform.position));
                     //Debug.Log("anim should happe");
                     //Destroy(this.gameObject);
 
-				}
-				if (this.name == "ButterflyTemp" || this.name == "ButterflyTemp(Clone)")
+                }
+                if (this.name == "ButterflyTemp" || this.name == "ButterflyTemp(Clone)")
 				{
                     this.GetComponent<MoveCurve>().Speed = 0f;
-                    StartCoroutine(ShowPoint(transform.position));
                     scoreManager.AddScore(5);
 		    scoreManager.BugCounter(4);
+                    //fadeOut Coroutine
                     StartCoroutine(FadeOut(1f));
+                    //showPoint Coroutine
+                    StartCoroutine(ShowPoint(transform.position));
                     //Destroy(gameObject);
-				}
-				if (this.name == "DragonflyTest" || this.name == "DragonflyTest(Clone)" 
+                }
+                if (this.name == "DragonflyTest" || this.name == "DragonflyTest(Clone)" 
                 || this.name == "CherryMeadow" || this.name == "CherryMeadow(Clone)"
                 || this.name == "BlueDarner" || this.name == "BlueDarner(Clone)")
 				{
                     this.GetComponent<MoveZigZag>().speed = 0f;
-                    StartCoroutine(ShowPoint(transform.position));
+                    // Completely stop dragonfly mvmt coroutine
+                    // so if tap when rotating does not continue rotating
+                    bugSpawner.StopCoroutine(Dmove);
                     scoreManager.AddScore(8);
 		    scoreManager.BugCounter(5);
+                    //fadeOut Coroutine
                     StartCoroutine(FadeOut(1f));
+                    //showPoint Coroutine
+                    StartCoroutine(ShowPoint(transform.position));
                     //Destroy(gameObject);
-				}
-				if (this.name == "BeeTemp" || this.name == "BeeTemp(Clone)")
+                }
+                if (this.name == "BeeTemp" || this.name == "BeeTemp(Clone)")
 				{
                     this.GetComponent<MoveCurve>().Speed = 0f;
-                    StartCoroutine(ShowPoint(transform.position));
                     scoreManager.AddScore(10);
 		    scoreManager.BugCounter(3);
+                    //fadeOut Coroutine
                     StartCoroutine(FadeOut(1f));
+                    //showPoint Coroutine
+                    StartCoroutine(ShowPoint(transform.position));
                     //Destroy(gameObject);
-				}
-				ShowScore showScore = FindObjectOfType<ShowScore>();
+                }
+                ShowScore showScore = FindObjectOfType<ShowScore>();
                 if (showScore != null)
                 {
                     showScore.UpdateScoreDisplay();
                     //Destroy(gameObject);
                 }
             }
+
+            //fadeOut Coroutine
+            //StartCoroutine(FadeOut(1f));
+            //showPoint Coroutine
+            //StartCoroutine(ShowPoint(transform.position));
 
             // Play the 'boink' audio clip
             if (boinkAudioSource != null)
@@ -118,7 +137,7 @@ public class TappedBug : MonoBehaviour
     {
 
         GameObject p = Instantiate(pointPrefab, position,
-            Quaternion.identity);
+            Quaternion.identity, transform);
         p.transform.SetParent(transform, false);
 
         yield return null;

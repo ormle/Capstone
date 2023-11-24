@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyGameObject: 1
-  pointPrefab: {fileID: 0}
+  pointPrefab: {fileID: 7270079540840007915, guid: 9529ec1a498194d5990bd90ac55cbfc6, type: 3}
 --- !u!114 &10957900387604013
 MonoBehaviour:
   m_ObjectHideFlags: 0
