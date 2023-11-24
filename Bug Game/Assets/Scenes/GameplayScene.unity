@@ -12661,6 +12661,10 @@ MonoBehaviour:
   - {fileID: 7546437292722619851, guid: 81c051061bd0c4c31b6492a21adc1202, type: 3}
   butterflyPrefabs:
   - {fileID: 6663083087295012105, guid: 6870f6cda59f20e4b9ae0d2493839d45, type: 3}
+  Ant:
+  - {fileID: 4130612791964109736, guid: 134019e50717d429caad6fc301b11efc, type: 3}
+  Ladybug:
+  - {fileID: 4130612791964109736, guid: 1e3024482431147e98dfa677eb1c77c3, type: 3}
   startDelay: 3
   spawnInterval: 2.5
   beeRoutes:

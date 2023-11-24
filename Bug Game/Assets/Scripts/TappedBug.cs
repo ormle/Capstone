@@ -13,6 +13,8 @@ public class TappedBug : MonoBehaviour
     private BugSpawner bugSpawner; // Reference BugSpawner for spawn script
 
     public IEnumerator Dmove; // Dragonfly mvmt coroutine
+    
+    private bool isTapped = false;
 
     void Start()
     {
@@ -30,7 +32,7 @@ public class TappedBug : MonoBehaviour
     {
 		ScoreManager scoreManager = ScoreManager.instance;
         
-        if (Time.timeScale == 1)//Only be able to tap bugs during game time
+        if (!isTapped && Time.timeScale == 1)//Only be able to tap bugs during game time
         {
             if (scoreManager != null)
             {
@@ -41,6 +43,7 @@ public class TappedBug : MonoBehaviour
                     scoreManager.AddScore(1);
 		    scoreManager.BugCounter(2);
                     //fadeOut Coroutine
+		    isTapped = true;
                     StartCoroutine(FadeOut(1f));
                     //showPoint Coroutine
                     StartCoroutine(ShowPoint(transform.position));
@@ -53,6 +56,7 @@ public class TappedBug : MonoBehaviour
                     this.GetComponent<MoveCurve>().Speed = 0f;
                     scoreManager.AddScore(5);
 		    scoreManager.BugCounter(4);
+		    isTapped = true;
                     //fadeOut Coroutine
                     StartCoroutine(FadeOut(1f));
                     //showPoint Coroutine
@@ -69,6 +73,7 @@ public class TappedBug : MonoBehaviour
                     bugSpawner.StopCoroutine(Dmove);
                     scoreManager.AddScore(8);
 		    scoreManager.BugCounter(5);
+		    isTapped = true;
                     //fadeOut Coroutine
                     StartCoroutine(FadeOut(1f));
                     //showPoint Coroutine
@@ -80,6 +85,7 @@ public class TappedBug : MonoBehaviour
                     this.GetComponent<MoveCurve>().Speed = 0f;
                     scoreManager.AddScore(10);
 		    scoreManager.BugCounter(3);
+		    isTapped = true;
                     //fadeOut Coroutine
                     StartCoroutine(FadeOut(1f));
                     //showPoint Coroutine
