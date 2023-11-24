@@ -59,6 +59,8 @@ public class BugSpawner : MonoBehaviour
 	public Transform[] butterflyRoutes;
 
 
+    public IEnumerator Dragonmove;
+
 	// Start is called before the first frame update
 	void Start()
     {
@@ -66,31 +68,31 @@ public class BugSpawner : MonoBehaviour
         if (beetlePrefabs.Length > 0)
         {
             new WaitForSeconds(startDelay);
-            StartCoroutine("SpawnRandomBeetle", spawnInterval);
+            StartCoroutine("SpawnRandomBeetle", spawnInterval - 0.35f);
         }
         //Ladybug
         if (ladybugPrefabs.Length > 0)
         {
             new WaitForSeconds(startDelay);
-            StartCoroutine("SpawnRandomLadybug", spawnInterval);
+            StartCoroutine("SpawnRandomLadybug", spawnInterval - 0.25);
         }
         if (beePrefabs.Length > 0)
         {
             new WaitForSeconds(startDelay);
             //Bee
-            StartCoroutine("SpawnRandomBee", spawnInterval);
+            StartCoroutine("SpawnRandomBee", spawnInterval + .35f);
         }
         if (dragonflyPrefabs.Length > 0)
         {
             // Dragonfly
             new WaitForSeconds(startDelay);
-            StartCoroutine("SpawnRandomDragonfly", spawnInterval);
+            StartCoroutine("SpawnRandomDragonfly", spawnInterval - 0.3f);
         }
 		if (butterflyPrefabs.Length > 0)
 		{
             // Butterfly
             new WaitForSeconds(startDelay);
-            StartCoroutine("SpawnRandomButterfly", spawnInterval);
+            StartCoroutine("SpawnRandomButterfly", spawnInterval + 0.25f);
         }
 	}
 
@@ -168,7 +170,7 @@ public class BugSpawner : MonoBehaviour
                 moveScript.leftright = lr;
             }
 
-            Debug.Log(spawnPos);
+            //Debug.Log(spawnPos);
 
             // Start a coroutine to control bug movement
             StartCoroutine(LadybugMovement(bug, moveScript));
@@ -256,10 +258,15 @@ public class BugSpawner : MonoBehaviour
                 moveScript.leftright = lr;
             }
 
-            Debug.Log(spawnPos);
+            //Debug.Log(spawnPos);
+            //Put coroutine into a variable
+            Dragonmove = DragonflyMovement(bug, moveScript, originalRotation);
+            //Give variable to tapscript
+            TappedBug tapScript = bug.GetComponent<TappedBug>();
+            if (tapScript != null) { tapScript.Dmove = Dragonmove; }
 
             // Start a coroutine to control bug movement
-            StartCoroutine(DragonflyMovement(bug, moveScript, originalRotation));
+            StartCoroutine(Dragonmove);
         }
 
     }
@@ -315,7 +322,9 @@ public class BugSpawner : MonoBehaviour
             // get the difference between the two to see how much u need to rotate
             float differenceInRotation = System.Math.Abs(originalRotation - randomRotation) ;
 
+            bool rotating = true;
             for (float i = 0; i<differenceInRotation; i++) {
+                if (rotating == false) { break; }
                 bug.transform.rotation = Quaternion.Euler(0f, 0f, originalRotation - i);
 
                 
