@@ -6,7 +6,7 @@ public class BugSpawner : MonoBehaviour
 { 
     //List of bug prefabs to go through and spawn randomly
     public GameObject[] beetlePrefabs, ladybugPrefabs, beePrefabs,
-        dragonflyPrefabs, butterflyPrefabs;
+        dragonflyPrefabs, butterflyPrefabs, Ant, Ladybug;
     public float startDelay = 2.8f;    //So bugs spawn after countdown
     public float spawnInterval = 2.5f; //Spawn every 2.5 seconds
 
@@ -183,13 +183,13 @@ public class BugSpawner : MonoBehaviour
         }
     }
     
-    IEnumerator SpawnRandomAnt(int repeat) // uses beetle prefabs atm
+    IEnumerator SpawnRandomAnt(int repeat) // uses single ant frame prefabs atm
     {
         while (true)
         {
             yield return new WaitForSeconds(repeat);
             // Randomly generate bug index
-            int bugIndex = Random.Range(0, beePrefabs.Length);
+            int bugIndex = Random.Range(0, Ant.Length);
 
             //Randomly choose to spawn from left or right
             int lr = Random.Range(0, 2);//0 = Left, 1 = Right
@@ -207,7 +207,7 @@ public class BugSpawner : MonoBehaviour
                 Random.Range(-spawnRange_RL_YL, spawnRange_RL_YU), 0);
 
             // Spawn bug
-            GameObject bug = Instantiate(beetlePrefabs[bugIndex], spawnPos,
+            GameObject bug = Instantiate(Ant[bugIndex], spawnPos,
                 Quaternion.Euler(0f, 0f, randomRotation));
             bug.transform.SetParent(transform, false);
 
@@ -237,7 +237,7 @@ public class BugSpawner : MonoBehaviour
         {
             yield return new WaitForSeconds(repeat);
             // Randomly generate bug index
-            int bugIndex = Random.Range(0, beetlePrefabs.Length);
+            int bugIndex = Random.Range(0, Ladybug.Length);
             //Randomly choose to spawn from left or right
             int lr = Random.Range(0, 1);//0 = Left, 1 = Right
             float randomRotation;
@@ -252,7 +252,7 @@ public class BugSpawner : MonoBehaviour
             Vector3 spawnPos = new Vector3(-spawnPos_RL_X, Random.Range(-spawnRange_RL_YL, spawnRange_RL_YU), 0);
 
             // Spawn bug with the calculated random rotation angle.
-            GameObject bug = Instantiate(beetlePrefabs[bugIndex], spawnPos, Quaternion.Euler(0f, 0f, randomRotation));
+            GameObject bug = Instantiate(Ladybug[bugIndex], spawnPos, Quaternion.Euler(0f, 0f, randomRotation));
             bug.transform.SetParent(transform, false);
 
             // Access the MoveForward script on the spawned bug and change its speed
