@@ -183,7 +183,7 @@ public class BugSpawner : MonoBehaviour
         }
     }
     
-    IEnumerator SpawnRandomAnt(int repeat) // uses bee prefabs atm
+    IEnumerator SpawnRandomAnt(int repeat) // uses beetle prefabs atm
     {
         while (true)
         {
@@ -207,7 +207,7 @@ public class BugSpawner : MonoBehaviour
                 Random.Range(-spawnRange_RL_YL, spawnRange_RL_YU), 0);
 
             // Spawn bug
-            GameObject bug = Instantiate(beePrefabs[bugIndex], spawnPos,
+            GameObject bug = Instantiate(beetlePrefabs[bugIndex], spawnPos,
                 Quaternion.Euler(0f, 0f, randomRotation));
             bug.transform.SetParent(transform, false);
 
@@ -230,14 +230,14 @@ public class BugSpawner : MonoBehaviour
     }
     
     
-    // USES bee prefab Coroutine!
+    // USES beetle prefab Coroutine!
     IEnumerator SpawnRandomLadybug(int repeat)
     {
         while (true)
         {
             yield return new WaitForSeconds(repeat);
             // Randomly generate bug index
-            int bugIndex = Random.Range(0, beePrefabs.Length);
+            int bugIndex = Random.Range(0, beetlePrefabs.Length);
             //Randomly choose to spawn from left or right
             int lr = Random.Range(0, 1);//0 = Left, 1 = Right
             float randomRotation;
