@@ -5807,6 +5807,7 @@ GameObject:
   m_Component:
   - component: {fileID: 922762920}
   - component: {fileID: 922762919}
+  - component: {fileID: 922762921}
   m_Layer: 0
   m_Name: Audio Source
   m_TagString: Untagged
@@ -5925,6 +5926,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &922762921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922762918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e8be09f2e40047e48164702a2012a46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &935998367
 GameObject:
   m_ObjectHideFlags: 0
@@ -6606,6 +6619,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: c0dc5781cae4a6348b42ea6b818a3f9c, type: 3}
       propertyPath: m_Name
       value: Cursors
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: c0dc5781cae4a6348b42ea6b818a3f9c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22401058, guid: c0dc5781cae4a6348b42ea6b818a3f9c, type: 3}
       propertyPath: m_Pivot.x
