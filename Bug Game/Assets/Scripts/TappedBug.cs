@@ -37,60 +37,51 @@ public class TappedBug : MonoBehaviour
             if (scoreManager != null)
             {
                 //Debug.Log(this.instance);
-                if (this.name == "TigerBeetle" ||  this.name == "TigerBeetle(Clone)")
+                if (this.name.Contains("TigerBeetle"))
                 {
                     this.GetComponent<MoveForward>().speed = 0f; // stops bug movement
-                    scoreManager.AddScore(1);
-		    scoreManager.BugCounter(2);
-                    //fadeOut Coroutine
-		    isTapped = true;
-                    StartCoroutine(FadeOut(1f));
-                    //showPoint Coroutine
-                    StartCoroutine(ShowPoint(transform.position));
-                    //Debug.Log("anim should happe");
-                    //Destroy(this.gameObject);
+                    scoreManager.AddScore(1); //Add score
+		            scoreManager.BugCounter(2); //Bugcounter
 
                 }
-                if (this.name == "ButterflyTemp" || this.name == "ButterflyTemp(Clone)")
+                if (this.name.Contains("Butterfly"))
 				{
                     this.GetComponent<MoveCurve>().Speed = 0f;
                     scoreManager.AddScore(5);
-		    scoreManager.BugCounter(4);
-		    isTapped = true;
-                    //fadeOut Coroutine
-                    StartCoroutine(FadeOut(1f));
-                    //showPoint Coroutine
-                    StartCoroutine(ShowPoint(transform.position));
-                    //Destroy(gameObject);
+		            scoreManager.BugCounter(4);
+
                 }
-                if (this.name == "DragonflyTest" || this.name == "DragonflyTest(Clone)" 
-                || this.name == "CherryMeadow" || this.name == "CherryMeadow(Clone)"
-                || this.name == "BlueDarner" || this.name == "BlueDarner(Clone)")
+                if (this.name.Contains("Dragonfly") || 
+                    this.name.Contains("CherryMeadow") ||
+                    this.name.Contains("BlueDarner"))
 				{
                     this.GetComponent<MoveZigZag>().speed = 0f;
                     // Completely stop dragonfly mvmt coroutine
                     // so if tap when rotating does not continue rotating
                     bugSpawner.StopCoroutine(Dmove);
                     scoreManager.AddScore(8);
-		    scoreManager.BugCounter(5);
-		    isTapped = true;
-                    //fadeOut Coroutine
-                    StartCoroutine(FadeOut(1f));
-                    //showPoint Coroutine
-                    StartCoroutine(ShowPoint(transform.position));
-                    //Destroy(gameObject);
+		            scoreManager.BugCounter(5);
+
                 }
-                if (this.name == "BeeTemp" || this.name == "BeeTemp(Clone)")
+                if (this.name.StartsWith("Bee")) //Cant use contains cause tigerBEEtle
 				{
                     this.GetComponent<MoveCurve>().Speed = 0f;
                     scoreManager.AddScore(10);
-		    scoreManager.BugCounter(3);
-		    isTapped = true;
-                    //fadeOut Coroutine
-                    StartCoroutine(FadeOut(1f));
-                    //showPoint Coroutine
-                    StartCoroutine(ShowPoint(transform.position));
-                    //Destroy(gameObject);
+		            scoreManager.BugCounter(3);
+
+                }
+                if (this.name.Contains("Ladybug"))
+                {
+                    this.GetComponent<MoveForward>().speed = 0f;
+                    scoreManager.AddScore(3);
+                    scoreManager.BugCounter(1);
+                }
+
+                if (this.name.Contains("Ant"))
+                {
+                    this.GetComponent<MoveForward>().speed = 0f;
+                    scoreManager.AddScore(1);
+                    scoreManager.BugCounter(6);
                 }
                 ShowScore showScore = FindObjectOfType<ShowScore>();
                 if (showScore != null)
@@ -100,21 +91,21 @@ public class TappedBug : MonoBehaviour
                 }
             }
 
+            //Tapped bug
+            isTapped = true;
             //fadeOut Coroutine
-            //StartCoroutine(FadeOut(1f));
+            StartCoroutine(FadeOut(1f));
             //showPoint Coroutine
-            //StartCoroutine(ShowPoint(transform.position));
+            StartCoroutine(ShowPoint(transform.position));
 
             // Play the 'boink' audio clip
             if (boinkAudioSource != null)
             {
                 boinkAudioSource.Play();
             }
+        }//End if
 
-        
-        }
-
-    }
+    }//End if
 
     IEnumerator FadeOut(float fadeSpeed)
     {
