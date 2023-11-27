@@ -12679,7 +12679,10 @@ MonoBehaviour:
   - {fileID: 4431115937744587292, guid: 73f28125fdcca4976834ca1034d7c592, type: 3}
   - {fileID: 7546437292722619851, guid: 81c051061bd0c4c31b6492a21adc1202, type: 3}
   butterflyPrefabs:
-  - {fileID: 6663083087295012105, guid: 6870f6cda59f20e4b9ae0d2493839d45, type: 3}
+  - {fileID: 6616015460915205620, guid: 35799c5288c96e247859ce6c4271c449, type: 3}
+  - {fileID: 2692719617753427367, guid: bbd52999b57dffb49906dcee66e75b5f, type: 3}
+  - {fileID: 4354362700387524490, guid: 46d2bfec12d731c4b8a0375125d371fe, type: 3}
+  - {fileID: 3695703128325189679, guid: d799dcb73ddf9694ebbc91025f700255, type: 3}
   antPrefabs:
   - {fileID: 4130612791964109736, guid: 134019e50717d429caad6fc301b11efc, type: 3}
   startDelay: 3
