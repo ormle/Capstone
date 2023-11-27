@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4110726920539379225}
   - component: {fileID: 4974326033765372338}
   - component: {fileID: 4680195864600144851}
+  - component: {fileID: 867253283658682025}
   m_Layer: 0
   m_Name: DragonflyTest
   m_TagString: Untagged
@@ -31,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 7526764403576537792}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 32.447437, y: 32.8573, z: 170.77599}
+  m_LocalScale: {x: 39, y: 39, z: 39}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -200,3 +201,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &867253283658682025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7526764403576537792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74da3bfbaca3044e2a37cd93067111a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

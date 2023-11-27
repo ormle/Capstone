@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -6274992189116398378}
   - component: {fileID: 10957900387604013}
   - component: {fileID: 5647065002517991435}
+  - component: {fileID: -4011844747409169582}
   m_Layer: 0
   m_Name: BlueDarner
   m_TagString: Untagged
@@ -142,7 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyGameObject: 1
-  pointPrefab: {fileID: 0}
+  pointPrefab: {fileID: 7270079540840007915, guid: 9529ec1a498194d5990bd90ac55cbfc6, type: 3}
 --- !u!114 &10957900387604013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,3 +201,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-4011844747409169582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7546437292722619851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74da3bfbaca3044e2a37cd93067111a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -4,13 +4,14 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
 
-    public int score = 0;
-    public int ladybug = 0;
-    public int beetle = 0;
-    public int bee = 0;
+    public int score     = 0;
+    public int ant       = 0;
+    public int ladybug   = 0;
+    public int beetle    = 0;
+    public int bee       = 0;
     public int butterfly = 0;
     public int dragonfly = 0;
-    public int total = 0;
+    public int total     = 0;
 
     private void Awake()
     {
@@ -20,52 +21,29 @@ public class ScoreManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         else
-        {
-            Destroy(gameObject);
-        }
+        { Destroy(gameObject); }
 
         // Retrieve the score from PlayerPrefs when the game starts
-        score = PlayerPrefs.GetInt("Score", 0);
-        ladybug = PlayerPrefs.GetInt("Lady", 0);
-        beetle = PlayerPrefs.GetInt("Beetle", 0);
-        bee = PlayerPrefs.GetInt("Bee", 0);
+        score     = PlayerPrefs.GetInt("Score", 0);
+        ant       = PlayerPrefs.GetInt("Ant", 0);
+        ladybug   = PlayerPrefs.GetInt("Lady", 0);
+        beetle    = PlayerPrefs.GetInt("Beetle", 0);
+        bee       = PlayerPrefs.GetInt("Bee", 0);
         butterfly = PlayerPrefs.GetInt("Butterfly", 0);
         dragonfly = PlayerPrefs.GetInt("Dragonfly", 0);
-        total = PlayerPrefs.GetInt("Total", 0);
+        total     = PlayerPrefs.GetInt("Total", 0);
     }
     
     public void BugCounter(int bug)
     {
-        if (bug == 1) 
-            {
-                ladybug += 1;
-                total +=1;
-            }
-        
-        else if (bug == 2) 
-            {
-                beetle += 1;
-                total +=1;
-            }
-            
-        else if (bug == 3) 
-            {
-                bee += 1;
-                total +=1;
-            }
-            
-        else if (bug == 4) 
-            {
-                butterfly += 1;
-                total +=1;
-            }
-            
-        else if (bug == 5) 
-            {
-                dragonfly += 1;
-                total +=1;
-            }
+        if (bug == 1)      { ladybug += 1; }
+        else if (bug == 2) { beetle += 1; }
+        else if (bug == 3) { bee += 1; }
+        else if (bug == 4) { butterfly += 1; }
+        else if (bug == 5) { dragonfly += 1; }
+        else if (bug == 6) { ant += 1; }
 
+        total += 1;
         SaveScore();
     }
 
@@ -79,7 +57,7 @@ public class ScoreManager : MonoBehaviour
     public void SaveScore()
     {
         PlayerPrefs.SetInt("Score", score);
-        
+        PlayerPrefs.SetInt("Ant", ant);
         PlayerPrefs.SetInt("Lady", ladybug);
         PlayerPrefs.SetInt("Beetle", beetle);
         PlayerPrefs.SetInt("Bee", bee);
@@ -92,13 +70,14 @@ public class ScoreManager : MonoBehaviour
     
     public void ResetScore()
     {
-        score = 0;
-        ladybug = 0;
-        beetle = 0;
-        bee = 0;
+        score     = 0;
+        ant       = 0;
+        ladybug   = 0;
+        beetle    = 0;
+        bee       = 0;
         butterfly = 0;
         dragonfly = 0;
-        total = 0;
+        total     = 0;
         SaveScore(); // Save the reset score to PlayerPrefs
     }
 
