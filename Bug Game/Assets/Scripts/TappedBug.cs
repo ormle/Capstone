@@ -69,6 +69,7 @@ public class TappedBug : MonoBehaviour
                 }
                 if (this.name.StartsWith("Bee")) //Cant use contains cause tigerBEEtle
 				{
+                    Debug.Log("bee");
                     this.GetComponent<MoveCurve>().Speed = 0f;
                     scoreManager.AddScore(10);
 		            scoreManager.BugCounter(3);
