@@ -241,7 +241,7 @@ public class BugSpawner : MonoBehaviour
             // Randomly generate bug index
             int bugIndex = Random.Range(0, ladybugPrefabs.Length);
             //Randomly choose to spawn from left or right
-            int lr = Random.Range(0, 1);//0 = Left, 1 = Right
+            int lr = Random.Range(0, 2);//0 = Left, 1 = Right
             float randomRotation;
             if (lr == 0)
             {
