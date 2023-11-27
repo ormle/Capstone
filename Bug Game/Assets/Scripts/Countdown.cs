@@ -19,7 +19,6 @@ public class Countdown : MonoBehaviour
 	}
 
 	IEnumerator CountdownCoroutine() {
-		yield return new WaitForSecondsRealtime(1f);
 		countdown.text = "3";
 		//threeSound.Play();
 

@@ -44,7 +44,10 @@ public class TappedBug : MonoBehaviour
 		            scoreManager.BugCounter(2); //Bugcounter
 
                 }
-                if (this.name.Contains("Butterfly"))
+                if (this.name.Contains("BlueMorpho") ||
+					this.name.Contains("ChristinaSulphur") ||
+					this.name.Contains("WhiteAdmiral") ||
+					this.name.Contains("Monarch"))
 				{
                     this.GetComponent<MoveCurve>().Speed = 0f;
                     scoreManager.AddScore(5);
