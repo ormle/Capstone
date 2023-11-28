@@ -83,7 +83,7 @@ public class Descriptions : MonoBehaviour
         float newY = transform.position.y + (Vector3.down.y * moveSpeed * Time.deltaTime);
 
         // Set the minimum height (adjust this value as needed)
-        float minHeight = -10f;
+        float minHeight = -100f;
 
         // Gradually increase the value of newY
         newY = Mathf.Lerp(transform.position.y, minHeight, Time.deltaTime * moveSpeed);
