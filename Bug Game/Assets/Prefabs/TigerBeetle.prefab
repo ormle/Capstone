@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 4130612791964109716}
   - component: {fileID: 4130612791964109714}
   - component: {fileID: 3821583612679295248}
-  - component: {fileID: 334297552609562257}
   m_Layer: 3
   m_Name: TigerBeetle
   m_TagString: Canvas
@@ -201,15 +200,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   leftright: 0
---- !u!114 &334297552609562257
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4130612791964109736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9dd3fa4ac04a5494b84798ea2148e059, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
