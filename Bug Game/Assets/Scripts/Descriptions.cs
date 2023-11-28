@@ -1,15 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using TouchScript.Gestures;
 using System;
+using TouchScript.Gestures;
+using UnityEngine;
 
 public class Descriptions : MonoBehaviour
 {
-    public float moveSpeed = 5f; // Adjust the speed as needed
+    public float moveSpeed = 10f; // Initial speed
     private bool movingUp = false;
     private bool movingDown = false;
     private bool isTapped = false;
+    private float minHeight = -10f;
+    private float maxHeight = 0f;
 
     void Start()
     {
@@ -22,15 +22,15 @@ public class Descriptions : MonoBehaviour
         // Check for button click to move the object up
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            movingUp = true;
-            movingDown = false;
+            //movingUp = true;
+            //movingDown = false;
         }
 
         // Check for button click to move the object down
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            movingUp = false;
-            movingDown = true;
+            //movingUp = false;
+            //movingDown = true;
         }
 
         // Move the object based on the current state
@@ -40,64 +40,55 @@ public class Descriptions : MonoBehaviour
         }
         else if (movingDown)
         {
-            moveSpeed = 2;
             MoveDown();
         }
     }
-    
+
     void TapGesture_Tapped(object sender, EventArgs e)
     {
-        Debug.Log("Tapped! Initiating MoveDown()");
-        movingUp = false;
-        movingDown = true;
+        //movingUp = false;
+        //movingDown = true;
     }
-    
 
-    void MoveUp()
+    public void MoveUp()
     {
+        movingUp = true;
+        movingDown = false;
+        
+        float upMoveSpeed = moveSpeed;
+
         // Move the object upward along the Y-axis
-        float newY = transform.position.y + (Vector3.up.y * moveSpeed * Time.deltaTime);
+        float newY = transform.position.y + (Vector3.up.y * upMoveSpeed * Time.deltaTime);
 
-        // Set the maximum height (adjust this value as needed)
-        float maxHeight = 0f;
-
-        // Gradually decrease the value of newY
-        newY = Mathf.Lerp(transform.position.y, maxHeight, Time.deltaTime * moveSpeed);
-
-        // Apply the new position
-        transform.position = new Vector3(transform.position.x, newY, transform.position.z);
+        // Apply the new position smoothly
+        transform.position = new Vector3(transform.position.x, Mathf.MoveTowards(transform.position.y, newY, upMoveSpeed * Time.deltaTime), transform.position.z);
 
         // Check if the object has reached the maximum height
         if (newY >= maxHeight)
         {
             // Stop moving up
             movingUp = false;
-            moveSpeed = 0;
         }
     }
 
     public void MoveDown()
-    {   
-        //Debug.Log("moving down! Initiating MoveDown()");
+    {
+        movingUp = false;
+        movingDown = true;
+        
+        float downMoveSpeed = moveSpeed;
+
         // Move the object downward along the Y-axis
-        float newY = transform.position.y + (Vector3.down.y * moveSpeed * Time.deltaTime);
+        float newY = transform.position.y - (downMoveSpeed * Time.deltaTime);
 
-        // Set the minimum height (adjust this value as needed)
-        float minHeight = -100f;
-
-        // Gradually increase the value of newY
-        newY = Mathf.Lerp(transform.position.y, minHeight, Time.deltaTime * moveSpeed);
-
-        // Apply the new position
-        transform.position = new Vector3(transform.position.x, newY, transform.position.z);
+        // Apply the new position smoothly
+        transform.position = new Vector3(transform.position.x, Mathf.MoveTowards(transform.position.y, newY, downMoveSpeed * Time.deltaTime), transform.position.z);
 
         // Check if the object has reached the minimum height
         if (newY <= minHeight)
         {
             // Stop moving down
             movingDown = false;
-            moveSpeed = 0;
         }
     }
-
 }
