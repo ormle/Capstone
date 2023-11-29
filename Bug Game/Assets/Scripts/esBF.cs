@@ -26,9 +26,10 @@ public class esBF : MonoBehaviour
         if (bee > 0) {
             textElement.text += ("Bee x" + bee + "\n"); 
         }*/
+        textElement.text = ("x0");
         
         if (butt > 0) {
-            textElement.text += ("Butterfly x" + butt + "\n"); 
+            textElement.text = ("x" + butt); 
         }/*
     
         if (beetle > 0) {

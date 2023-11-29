@@ -22,8 +22,10 @@ public class esBees : MonoBehaviour
 
         //Display amount of bug caught
         
+        textElement.text = ("x0");
+        
         if (bee > 0) {
-            textElement.text += ("Bee x" + bee + "\n"); 
+            textElement.text = ("x" + bee); 
         }
         /*
         if (butt > 0) {

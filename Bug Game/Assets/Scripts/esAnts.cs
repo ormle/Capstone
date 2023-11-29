@@ -38,9 +38,10 @@ public class esAnts : MonoBehaviour
         if (dragon > 0) {
             textElement.text += ("Dragonfly x" + dragon + "\n");
         }*/
+        textElement.text = ("x0");
 
         if (ant > 0) {
-            textElement.text += ("Ant x" + ant + "\n");
+            textElement.text = ("x" + ant);
         }/*
 
         if (lady > 0) {

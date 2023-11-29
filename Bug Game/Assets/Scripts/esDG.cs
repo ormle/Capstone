@@ -35,8 +35,11 @@ public class esDG : MonoBehaviour
             textElement.text += ("Beetle x" + beetle + "\n");
         }
         */
+        
+        textElement.text = ("x0");
+        
         if (dragon > 0) {
-            textElement.text += ("Dragonfly x" + dragon + "\n");
+            textElement.text = ("x" + dragon);
         }/*
 
         if (ant > 0) {

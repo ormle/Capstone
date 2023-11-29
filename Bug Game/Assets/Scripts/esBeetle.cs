@@ -30,9 +30,11 @@ public class esBeetle : MonoBehaviour
         if (butt > 0) {
             textElement.text += ("Butterfly x" + butt + "\n"); 
         }*/
+        
+        textElement.text = ("x0");
     
         if (beetle > 0) {
-            textElement.text += ("Beetle x" + beetle + "\n");
+            textElement.text = ("x" + beetle);
         }
         /*
         if (dragon > 0) {
