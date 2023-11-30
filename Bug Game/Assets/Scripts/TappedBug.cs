@@ -82,10 +82,16 @@ public class TappedBug : MonoBehaviour
                     scoreManager.AddScore(3);
                     scoreManager.BugCounter(1);
                 }
-
+                if (this.name.Contains("Banner")) // deals with ants that pull banner
+                {
+                    
+                    scoreManager.AddScore(1);
+                    scoreManager.BugCounter(6);
+                }
                 if (this.name.Contains("Ant"))
                 {
-                    this.GetComponent<MoveForward>().speed = 0f;
+                    
+                    this.GetComponent<MoveForward>().speed = 0f; 
                     scoreManager.AddScore(1);
                     scoreManager.BugCounter(6);
                 }
