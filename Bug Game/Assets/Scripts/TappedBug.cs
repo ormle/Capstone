@@ -82,7 +82,7 @@ public class TappedBug : MonoBehaviour
                     scoreManager.AddScore(3);
                     scoreManager.BugCounter(1);
                 }
-                if (this.name.Contains("Banner"))
+                if (this.name.Contains("Banner")) // deals with ants that pull banner
                 {
                     
                     scoreManager.AddScore(1);

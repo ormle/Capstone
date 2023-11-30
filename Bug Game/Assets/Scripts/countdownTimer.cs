@@ -43,6 +43,8 @@ public class countdownTimer : MonoBehaviour
 		textElement.text = textValue + ((int)System.Math.Round(currentTime)).ToString();
 		if (currentTime <= 13) {
 			banner.transform.position += -transform.right * 5 * Time.deltaTime;
+
+			// deals with if the ant that pulls the banner is deleted or not
 			if(ant1 != null) {
 				ant1.transform.position += -transform.right * 5 * Time.deltaTime;
 			}
