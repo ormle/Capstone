@@ -9,7 +9,7 @@ public class Descriptions : MonoBehaviour
     private bool movingDown = false;
     private bool isTapped = false;
     private float minHeight = -10f;
-    private float maxHeight = 0f;
+    private float maxHeight = -0.2f;
 
     void Start()
     {
