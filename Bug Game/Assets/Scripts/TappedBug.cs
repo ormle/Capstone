@@ -25,6 +25,7 @@ public class TappedBug : MonoBehaviour
         // Find the 'boink' AudioSource by name in the scene
         boinkAudioSource = GameObject.Find("boink").GetComponent<AudioSource>();
         // Find BugSpawner by name in scene
+        
         bugSpawner = GameObject.Find("BugSpawner").GetComponent<BugSpawner>();
     }
 
@@ -49,7 +50,7 @@ public class TappedBug : MonoBehaviour
 					this.name.Contains("WhiteAdmiral") ||
 					this.name.Contains("Monarch"))
 				{
-                    Debug.Log("butter");
+                    //Debug.Log("butter");
                     this.GetComponent<MoveCurve>().Speed = 0f;
                     scoreManager.AddScore(5);
 		            scoreManager.BugCounter(4);
