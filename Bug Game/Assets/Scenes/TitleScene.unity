@@ -283,8 +283,8 @@ MonoBehaviour:
   - {fileID: 652223809735497646, guid: be40298c5478f4f63a1e15c859d70ee8, type: 3}
   - {fileID: 5631892038782983417, guid: ee34d036fd8e34230b4c7ef15d24ed9f, type: 3}
   - {fileID: 281949788015566703, guid: 8a498b7eba86f4b54b9c156043815434, type: 3}
-  startDelay: 3
-  spawnInterval: 10
+  startDelay: 0.2
+  spawnInterval: 45
   routes:
   - {fileID: 1055395502}
 --- !u!114 &70716697
