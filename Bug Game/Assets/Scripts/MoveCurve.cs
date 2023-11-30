@@ -13,21 +13,37 @@ public class MoveCurve : MonoBehaviour
     public float Speed = 0.15f;
 
     private bool coroutineAllowed = true;
+
+    private bool pause = false;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (this.name.Contains("Variant")) { pause = true; }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (coroutineAllowed) { StartCoroutine(GoRoute(PathToGo)); }
+        
+        if (coroutineAllowed) {
+            if (PathToGo == 3 && pause == true)
+            {
+                StartCoroutine("pauseBug");
+            }
+            else { StartCoroutine(GoRoute(PathToGo)); }
+
+        }
+    }
+
+    private IEnumerator pauseBug() {
+        yield return new WaitForSeconds(10f);
+        pause = false;
     }
 
     private IEnumerator GoRoute(int PathNo)
     {
+
         coroutineAllowed = false;//So no new coroutines will start
 
         //Control point positions
