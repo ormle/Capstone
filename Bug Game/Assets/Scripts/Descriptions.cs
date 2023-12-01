@@ -7,7 +7,6 @@ public class Descriptions : MonoBehaviour
     public float moveSpeed = 10f; // Initial speed
     private bool movingUp = false;
     private bool movingDown = false;
-    private bool isTapped = false;
     private float minHeight = -10f;
     private float maxHeight = -0.2f;
 
@@ -19,20 +18,6 @@ public class Descriptions : MonoBehaviour
 
     void Update()
     {
-        // Check for button click to move the object up
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            //movingUp = true;
-            //movingDown = false;
-        }
-
-        // Check for button click to move the object down
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            //movingUp = false;
-            //movingDown = true;
-        }
-
         // Move the object based on the current state
         if (movingUp)
         {

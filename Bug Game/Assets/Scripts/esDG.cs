@@ -12,43 +12,15 @@ public class esDG : MonoBehaviour
     void Start()
     {
         // Retrieve the score from PlayerPrefs
-        int score    = PlayerPrefs.GetInt("Score", 0);
-        int bee    = PlayerPrefs.GetInt("Bee", 0);
-        int butt   = PlayerPrefs.GetInt("Butterfly", 0);
-        int beetle = PlayerPrefs.GetInt("Beetle", 0);
-        int dragon = PlayerPrefs.GetInt("Dragonfly", 0);
-        int ant    = PlayerPrefs.GetInt("Ant", 0);
-        int lady   = PlayerPrefs.GetInt("Lady", 0);
 
-        //Display amount of bug caught
-        
-        /*
-        if (bee > 0) {
-            textElement.text += ("Bee x" + bee + "\n"); 
-        }
-        
-        if (butt > 0) {
-            textElement.text += ("Butterfly x" + butt + "\n"); 
-        }
-    
-        if (beetle > 0) {
-            textElement.text += ("Beetle x" + beetle + "\n");
-        }
-        */
-        
+        int dragon = PlayerPrefs.GetInt("Dragonfly", 0);
+        int gd = PlayerPrefs.GetInt("Dragonflygd", 0);
+        int ch = PlayerPrefs.GetInt("Dragonflych", 0);
+
         textElement.text = ("x0");
         
-        if (dragon > 0) {
-            textElement.text = ("x" + dragon);
-        }/*
-
-        if (ant > 0) {
-            textElement.text += ("Ant x" + ant + "\n");
+        if (dragon > 0 || gd > 0 || ch > 0) {
+            textElement.text = ("x" + (dragon+gd+ch));
         }
-
-        if (lady > 0) {
-            textElement.text += ("x" + lady);
-        }*/
-    
     }
 }
