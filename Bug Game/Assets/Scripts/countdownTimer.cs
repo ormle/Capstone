@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class countdownTimer : MonoBehaviour
 {
-    float currentTime = 0f;
-    float startingTime = 45.1f;
+    public float currentTime = 0f;
+    float startingTime = 46.9f;
 	public string textValue = "Timer: ";
 	public TextMeshProUGUI textElement;
 	public TextMeshProUGUI timesUp;
@@ -22,12 +22,22 @@ public class countdownTimer : MonoBehaviour
 	public GameObject ant5;
 	public GameObject ant6;
 
+	public GameObject bugSpawner;
+
+	public GameObject sLoader;
+	private StateLoader stateLoaderscript;
+
+	private bool startTime = false;
+
 	// Start is called before the first frame update
 	void Start()
     {
+		StartCoroutine(WaitForStart());
+
 		//banner.SetActive(false);
 		timesUp.enabled = false;
         currentTime = startingTime;
+		stateLoaderscript = sLoader.GetComponent<StateLoader>();
     }
 
     // Update is called once per frame
@@ -35,12 +45,16 @@ public class countdownTimer : MonoBehaviour
     {
         if (currentTime == 3f) { 
 			//3 2 1
-			Debug.Log("here");
+			//Debug.Log("here");
         }
 		currentTime -= 1 * Time.deltaTime;
 
-		timerBar.fillAmount = currentTime / startingTime;
-		textElement.text = textValue + ((int)System.Math.Round(currentTime)).ToString();
+		if (startTime)
+		{
+			timerBar.fillAmount = currentTime / startingTime;
+			textElement.text = textValue + ((int)System.Math.Round(currentTime)).ToString();
+		}
+
 		if (currentTime <= 13) {
 			banner.transform.position += -transform.right * 5 * Time.deltaTime;
 
@@ -71,16 +85,23 @@ public class countdownTimer : MonoBehaviour
 		{
 			// Debug.Log("current time:" + currentTime);
 			timesUp.enabled = true;
-			timesUp.GetComponent<Animator>().Play("Default.TimesUp");
+			//timesUp.GetComponent<Animator>().Play("Default.TimesUp");
 			banner.SetActive(false);
 			Time.timeScale = 0;
 			//	TIMES UP animation
-			NextState();
-
+			//NextState();
+			new WaitForSecondsRealtime(2);
+			StartCoroutine(stateLoaderscript.LoadState(3));
+			
 		}
 	}
 
-	public void NextState()
+	IEnumerator WaitForStart() {
+		yield return new WaitForSecondsRealtime(1.5f);
+		startTime = true;
+	}
+
+	/*public void NextState()
 	{
 		StartCoroutine(LoadState(SceneManager.GetActiveScene().buildIndex + 1));
 	}
@@ -88,7 +109,8 @@ public class countdownTimer : MonoBehaviour
 	IEnumerator LoadState(int sceneIndex)
 	{
 		yield return new WaitForSecondsRealtime(2f);
+		transition.SetTrigger("TimeUp");
 		SceneManager.LoadScene(sceneIndex);
 		Time.timeScale = 1;
-	}
+	}*/
 }

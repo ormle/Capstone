@@ -14,12 +14,22 @@ public class Countdown : MonoBehaviour
 	public GameObject lapTimer;
 
 	public void Start() {
-		Time.timeScale = 0;
+
+		countdown.enabled = false;
 		StartCoroutine(CountdownCoroutine());
+
 	}
 
 	IEnumerator CountdownCoroutine() {
+
+		yield return new WaitForSeconds(1.5f);
+
+		countdown.enabled = true;
+
+		Time.timeScale = 0;
+
 		countdown.text = "3";
+		
 		//threeSound.Play();
 
 		yield return new WaitForSecondsRealtime(1f);

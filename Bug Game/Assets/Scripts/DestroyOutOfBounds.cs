@@ -7,12 +7,16 @@ public class DestroyOutOfBounds : MonoBehaviour
     private float boundLR = 11; //-left, +right
     private float boundTB = 11; //-bottom, +top
 
+    private countdownTimer ctscript;
+
+
     private bool isDestroyed = false; // Flag to prevent multiple destroy calls
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(DestroyAfterTime(30.0f)); // Destroy after 30 seconds
+        StartCoroutine(DestroyAfterTime(15.0f)); // Destroy after 15 seconds
+        ctscript = GameObject.Find("TimerText").GetComponent<countdownTimer>();
     }
 
     // Update is called once per frame
@@ -43,6 +47,9 @@ public class DestroyOutOfBounds : MonoBehaviour
                 isDestroyed = true;
             }
         }
+        if (ctscript.currentTime <= 6) {
+            Debug.Log("Goodbye bug!");
+            StartCoroutine(DestroyAfterTime(2.0f)); }
     }
 
     IEnumerator DestroyAfterTime(float time)

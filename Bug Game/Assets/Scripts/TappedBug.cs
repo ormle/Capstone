@@ -43,10 +43,10 @@ public class TappedBug : MonoBehaviour
                     this.GetComponent<MoveForward>().speed = 0f; // stops bug movement
                     scoreManager.AddScore(1); //Add score
 		    
-		    if (this.name.Contains("Black")) {
-			scoreManager.BugCounter(8); }
-		    else {
-			scoreManager.BugCounter(2); } //Bugcounter brown
+		            if (this.name.Contains("Black")) {
+			            scoreManager.BugCounter(8); }
+		            else {
+			            scoreManager.BugCounter(2); } //Bugcounter brown
 
                 }
                 if (this.name.Contains("BlueMorpho") ||
@@ -58,15 +58,14 @@ public class TappedBug : MonoBehaviour
                     this.GetComponent<MoveCurve>().Speed = 0f;
                     scoreManager.AddScore(5);
 		    
-		    if (this.name.Contains("BlueMorpho")) {
-			scoreManager.BugCounter(11); }
-		    else if (this.name.Contains("Christina")) {
-			scoreManager.BugCounter(10); }
-		    else if (this.name.Contains("White")) {
-			scoreManager.BugCounter(9); }
-		    else if (this.name.Contains("Monarch")) {
-			scoreManager.BugCounter(4); }
-
+		            if (this.name.Contains("BlueMorpho")) {
+			            scoreManager.BugCounter(11); }
+		            else if (this.name.Contains("Christina")) {
+			            scoreManager.BugCounter(10); }
+		            else if (this.name.Contains("White")) {
+			            scoreManager.BugCounter(9); }
+		            else if (this.name.Contains("Monarch")) {
+			            scoreManager.BugCounter(4); }
                 }
                 if (this.name.Contains("Dragonfly") || 
                     this.name.Contains("CherryMeadow") ||
@@ -78,13 +77,12 @@ public class TappedBug : MonoBehaviour
                     bugSpawner.StopCoroutine(Dmove);
                     scoreManager.AddScore(8);
 		    
-		    if (this.name.Contains("BlueDarner")) {
-			scoreManager.BugCounter(5); }
-		    else if (this.name.Contains("Dragonfly")) {
-			scoreManager.BugCounter(12); }
-		    else if (this.name.Contains("Cherry")) {
-			scoreManager.BugCounter(13); }
-		    
+		            if (this.name.Contains("BlueDarner")) {
+			            scoreManager.BugCounter(5); }
+		            else if (this.name.Contains("Dragonfly")) {
+			            scoreManager.BugCounter(12); }
+		            else if (this.name.Contains("Cherry")) {
+			            scoreManager.BugCounter(13); }
 
                 }
                 if (this.name.StartsWith("Bee")) //Cant use contains cause tigerBEEtle
@@ -99,9 +97,9 @@ public class TappedBug : MonoBehaviour
                 {
                     this.GetComponent<MoveForward>().speed = 0f;
                     scoreManager.AddScore(3);
-		    if (this.name.Contains("Yellow")) {
-			scoreManager.BugCounter(7); }
-		    else {scoreManager.BugCounter(1);}
+		            if (this.name.Contains("Yellow")) {
+			            scoreManager.BugCounter(7); }
+		            else {scoreManager.BugCounter(1);}
                 }
                 if (this.name.Contains("Banner")) // deals with ants that pull banner
                 {
