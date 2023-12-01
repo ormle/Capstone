@@ -10,7 +10,7 @@ public class MoveCurve : MonoBehaviour
     private int PathToGo = 0;
     private float tParam = 0f;
     public Vector2 bugPos;   
-    public float Speed = 0.15f;
+    public float Speed = 0.35f;
 
     private bool coroutineAllowed = true;
 
