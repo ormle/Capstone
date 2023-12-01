@@ -18,7 +18,7 @@ public class LockedLady : MonoBehaviour
             if (rectTransform != null)
             {
                 // Set the initial coordinates using anchoredPosition
-                rectTransform.anchoredPosition = new Vector3(-971f, 263f, 0f);
+                rectTransform.anchoredPosition = new Vector3(-971f, 63f, 0f);
 
                 // Make the object active
                 objectToTransform.SetActive(true);

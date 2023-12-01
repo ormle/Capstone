@@ -18,7 +18,7 @@ public class LockedAnt : MonoBehaviour
             if (rectTransform != null)
             {
                 // Set the initial coordinates using anchoredPosition
-                rectTransform.anchoredPosition = new Vector3(43f, 263f, 0f);
+                rectTransform.anchoredPosition = new Vector3(43f, 63f, 0f);
 
                 // Make the object active
                 objectToTransform.SetActive(true);
