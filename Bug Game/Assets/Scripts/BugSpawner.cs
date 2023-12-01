@@ -74,19 +74,19 @@ public class BugSpawner : MonoBehaviour
         if (ladybugPrefabs.Length > 0)
         {
             new WaitForSeconds(startDelay);
-            StartCoroutine("SpawnRandomLadybug", spawnInterval - 0.25);
+            StartCoroutine("SpawnRandomLadybug", spawnInterval - 0.55);
         }
 	    //ant
-	    if (beetlePrefabs.Length > 0)
+	    if (antPrefabs.Length > 0)
         {
             new WaitForSeconds(startDelay);
-            StartCoroutine("SpawnRandomAnt", spawnInterval - 0.35f);
+            StartCoroutine("SpawnRandomAnt", spawnInterval - 0.65f);
         }
         //Bee
         if (beePrefabs.Length > 0)
         {
             new WaitForSeconds(startDelay);
-            StartCoroutine("SpawnRandomBee", spawnInterval + 1.5f);
+            StartCoroutine("SpawnRandomBee", spawnInterval + 1f);
         }
         // Dragonfly
         if (dragonflyPrefabs.Length > 0)
@@ -107,16 +107,16 @@ public class BugSpawner : MonoBehaviour
     {
         int scoreValue = PlayerPrefs.GetInt("Score", 0);
         //Increase spawn rate once score reaches 50, 100, and 300 points
-        if (scoreValue >= 50 && spawnInterval >= 2.5f)
+        if (scoreValue >= 75 && spawnInterval >= 2.5f)
         {
-            spawnInterval = 1.9f;
+            spawnInterval = 1.4f;
         }
-        else if (scoreValue >= 150 && spawnInterval >= 1.9f)
+        else if (scoreValue >= 150 && spawnInterval >= 1.4f)
         {
-            spawnInterval = 1.3f;
+            spawnInterval = 0.8f;
         }
-        else if (scoreValue >= 300 && spawnInterval >= 1.3f) {
-            spawnInterval = 0.9f;
+        else if (scoreValue >= 250 && spawnInterval >= 0.8f) {
+            spawnInterval = 0.3f;
         }
             
     }
@@ -392,7 +392,7 @@ public class BugSpawner : MonoBehaviour
     IEnumerator AntMovement(GameObject bug, MoveForward moveScript)
     {
         // Move for a random duration
-        float moveDuration = Random.Range(2f, 3f);
+        float moveDuration = Random.Range(2f, 7f);
         yield return new WaitForSeconds(moveDuration);
 
         // Stop moving for a random duration 
