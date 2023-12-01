@@ -12,41 +12,14 @@ public class esBF : MonoBehaviour
     void Start()
     {
         // Retrieve the score from PlayerPrefs
-        int score    = PlayerPrefs.GetInt("Score", 0);
-        int bee    = PlayerPrefs.GetInt("Bee", 0);
-        int butt   = PlayerPrefs.GetInt("Butterfly", 0);
-        int beetle = PlayerPrefs.GetInt("Beetle", 0);
-        int dragon = PlayerPrefs.GetInt("Dragonfly", 0);
-        int ant    = PlayerPrefs.GetInt("Ant", 0);
-        int lady   = PlayerPrefs.GetInt("Lady", 0);
 
-        //Display amount of bug caught
+        int butt = PlayerPrefs.GetInt("Butterfly", 0);
+        int wa = PlayerPrefs.GetInt("Butterflywa", 0);
+        int ch = PlayerPrefs.GetInt("Butterflych", 0);
+        int bl = PlayerPrefs.GetInt("Butterflybl", 0);
         
-        /*
-        if (bee > 0) {
-            textElement.text += ("Bee x" + bee + "\n"); 
-        }*/
-        textElement.text = ("x0");
-        
-        if (butt > 0) {
-            textElement.text = ("x" + butt); 
-        }/*
-    
-        if (beetle > 0) {
-            textElement.text += ("Beetle x" + beetle + "\n");
-        }
-        
-        if (dragon > 0) {
-            textElement.text += ("Dragonfly x" + dragon + "\n");
-        }
+        if (butt > 0 || wa > 0 || ch > 0 || bl > 0) {
+            textElement.text = ("x" + (butt + wa + ch + bl)); }
 
-        if (ant > 0) {
-            textElement.text += ("Ant x" + ant + "\n");
-        }
-
-        if (lady > 0) {
-            textElement.text += ("x" + lady);
-        }*/
-    
     }
 }

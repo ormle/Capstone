@@ -12,42 +12,16 @@ public class esBeetle : MonoBehaviour
     void Start()
     {
         // Retrieve the score from PlayerPrefs
-        int score    = PlayerPrefs.GetInt("Score", 0);
-        int bee    = PlayerPrefs.GetInt("Bee", 0);
-        int butt   = PlayerPrefs.GetInt("Butterfly", 0);
         int beetle = PlayerPrefs.GetInt("Beetle", 0);
-        int dragon = PlayerPrefs.GetInt("Dragonfly", 0);
-        int ant    = PlayerPrefs.GetInt("Ant", 0);
-        int lady   = PlayerPrefs.GetInt("Lady", 0);
+        int blackbeetle = PlayerPrefs.GetInt("Blackbeetle", 0);
+        
 
-        //Display amount of bug caught
-        
-        /*
-        if (bee > 0) {
-            textElement.text += ("Bee x" + bee + "\n"); 
-        }
-        
-        if (butt > 0) {
-            textElement.text += ("Butterfly x" + butt + "\n"); 
-        }*/
-        
         textElement.text = ("x0");
+        
+        int total = beetle + blackbeetle;
     
-        if (beetle > 0) {
-            textElement.text = ("x" + beetle);
+        if (beetle > 0 || blackbeetle > 0) {
+            textElement.text = ("x" + total);
         }
-        /*
-        if (dragon > 0) {
-            textElement.text += ("Dragonfly x" + dragon + "\n");
-        }
-
-        if (ant > 0) {
-            textElement.text += ("Ant x" + ant + "\n");
-        }
-
-        if (lady > 0) {
-            textElement.text += ("x" + lady);
-        }*/
-    
     }
 }
