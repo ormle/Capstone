@@ -7,7 +7,7 @@ public class BugSpawner : MonoBehaviour
     //List of bug prefabs to go through and spawn randomly
     public GameObject[] beetlePrefabs, ladybugPrefabs, beePrefabs,
         dragonflyPrefabs, butterflyPrefabs, antPrefabs;
-    public float startDelay = 2.8f;    //So bugs spawn after countdown
+    public float startDelay = 6.5f;    //So bugs spawn after countdown
     public float spawnInterval = 2.5f; //Spawn every 2.5 seconds
 
 
@@ -67,37 +67,37 @@ public class BugSpawner : MonoBehaviour
         //Beetle
         if (beetlePrefabs.Length > 0)
         {
-            new WaitForSeconds(startDelay);
+            new WaitForSecondsRealtime(startDelay);
             StartCoroutine("SpawnRandomBeetle", spawnInterval - 0.55f);
         }
         //Ladybug
         if (ladybugPrefabs.Length > 0)
         {
-            new WaitForSeconds(startDelay);
+            new WaitForSecondsRealtime(startDelay);
             StartCoroutine("SpawnRandomLadybug", spawnInterval - 0.55);
         }
 	    //ant
 	    if (antPrefabs.Length > 0)
         {
-            new WaitForSeconds(startDelay);
+            new WaitForSecondsRealtime(startDelay);
             StartCoroutine("SpawnRandomAnt", spawnInterval - 0.65f);
         }
         //Bee
         if (beePrefabs.Length > 0)
         {
-            new WaitForSeconds(startDelay);
+            new WaitForSecondsRealtime(startDelay);
             StartCoroutine("SpawnRandomBee", spawnInterval + 1f);
         }
         // Dragonfly
         if (dragonflyPrefabs.Length > 0)
         {
-            new WaitForSeconds(startDelay);
+            new WaitForSecondsRealtime(startDelay);
             StartCoroutine("SpawnRandomDragonfly", spawnInterval - 1.05f);
         }
         // Butterfly
 		if (butterflyPrefabs.Length > 0)
 		{
-            new WaitForSeconds(startDelay);
+            new WaitForSecondsRealtime(startDelay);
             StartCoroutine("SpawnRandomButterfly", spawnInterval + 1.3f);
         }
 	}
@@ -500,8 +500,7 @@ public class BugSpawner : MonoBehaviour
             //Debug.Log("SpawnPos: " + spawnPos);
 
             // Spawn bug with the calculated random rotation angle.
-            //Currently rotation angle is 270deg
-            GameObject bug = Instantiate(beePrefabs[bugIndex], spawnPos, Quaternion.Euler(0f, 0f, 0));
+            GameObject bug = Instantiate(beePrefabs[bugIndex], spawnPos, Quaternion.Euler(0f, 0f, 0f));
             bug.transform.SetParent(transform, false);
 
             // Access the MoveForward script on the spawned bug and change its speed and spawnPos
@@ -544,7 +543,7 @@ public class BugSpawner : MonoBehaviour
 
             // Spawn bug with the calculated random rotation angle.
             //Currently rotation angle is 270deg
-            GameObject bug = Instantiate(butterflyPrefabs[bugIndex], spawnPos, Quaternion.Euler(0f, 0f, 0));
+            GameObject bug = Instantiate(butterflyPrefabs[bugIndex], spawnPos, Quaternion.Euler(0f, 0f, 0f));
             bug.transform.SetParent(transform, false);
 
             // Access the MoveForward script on the spawned bug and change its speed and spawnPos

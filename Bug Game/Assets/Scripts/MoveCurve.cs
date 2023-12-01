@@ -29,7 +29,7 @@ public class MoveCurve : MonoBehaviour
         if (coroutineAllowed) {
             if (PathToGo == 3 && pause == true)
             {
-                StartCoroutine("pauseBug");
+                StartCoroutine(pauseBug());
             }
             else { StartCoroutine(GoRoute(PathToGo)); }
 

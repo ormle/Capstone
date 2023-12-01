@@ -11,14 +11,15 @@ public class StateLoader : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (Input.GetKey("right"))
+		/*if (Input.GetKey("right"))
 		{
 			NextState();
 		}
 		if (Input.GetKey("left"))
 		{
 			PreviousState();
-		}
+		}*/
+
 	}
 
 
@@ -35,28 +36,40 @@ public class StateLoader : MonoBehaviour
 	public void RestartState()
 	{
 		ScoreManager.instance.ResetScore();
-		SceneManager.LoadScene("TutorialScene");
+		StartCoroutine(LoadState(1));
 	}
 
 	public void HomeState()
 	{
 		ScoreManager.instance.ResetScore();
-		SceneManager.LoadScene("TitleScene");
+		StartCoroutine(LoadState(0));
 	}
 
 	//Creating coroutine??
-	IEnumerator LoadState(int sceneIndex)
+	public IEnumerator LoadState(int sceneIndex)
 	{
 		switch (sceneIndex)
 		{
+			case 0:
+				transition.SetTrigger("Slide");
+				break;
+			case 1:
+				transition.SetTrigger("Slide");
+				break;
 			case 2://Tutorial Scene
 				transition.SetTrigger("Ready");
 				break;
+			case 3:
+				yield return new WaitForSecondsRealtime(2f);
+				transition.SetTrigger("EndGame");
+				break;
 		}
-
+		if (Time.timeScale == 0) { Time.timeScale = 1; }
+		
 		yield return new WaitForSeconds(transitionTime);
 
 		SceneManager.LoadScene(sceneIndex);
+		
 	}
 
 }
