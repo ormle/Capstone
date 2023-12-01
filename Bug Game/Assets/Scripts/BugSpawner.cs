@@ -68,7 +68,7 @@ public class BugSpawner : MonoBehaviour
         if (beetlePrefabs.Length > 0)
         {
             new WaitForSeconds(startDelay);
-            StartCoroutine("SpawnRandomBeetle", spawnInterval - 0.35f);
+            StartCoroutine("SpawnRandomBeetle", spawnInterval - 0.55f);
         }
         //Ladybug
         if (ladybugPrefabs.Length > 0)
@@ -92,7 +92,7 @@ public class BugSpawner : MonoBehaviour
         if (dragonflyPrefabs.Length > 0)
         {
             new WaitForSeconds(startDelay);
-            StartCoroutine("SpawnRandomDragonfly", spawnInterval - 0.3f);
+            StartCoroutine("SpawnRandomDragonfly", spawnInterval - 1.05f);
         }
         // Butterfly
 		if (butterflyPrefabs.Length > 0)
@@ -364,7 +364,7 @@ public class BugSpawner : MonoBehaviour
     IEnumerator BeetleMovement(GameObject bug, MoveForward moveScript)
     {
         // Move for a random duration
-        float moveDuration = Random.Range(1f, 3f);
+        float moveDuration = Random.Range(1.5f, 7f);
         yield return new WaitForSeconds(moveDuration);
 
         // Stop moving for a random duration 
