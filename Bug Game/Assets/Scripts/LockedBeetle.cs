@@ -18,7 +18,7 @@ public class LockedBeetle : MonoBehaviour
             if (rectTransform != null)
             {
                 // Set the initial coordinates using anchoredPosition
-                rectTransform.anchoredPosition = new Vector3(991f, -190f, 0f);
+                rectTransform.anchoredPosition = new Vector3(991f, -390f, 0f);
 
                 // Make the object active
                 objectToTransform.SetActive(true);
