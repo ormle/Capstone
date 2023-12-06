@@ -8,8 +8,15 @@ public class StateLoader : MonoBehaviour
 	public Animator transition;
 	public float transitionTime = 1f;
 
-	// Update is called once per frame
-	void Update()
+    private void Start()
+    {
+		if (SceneManager.GetActiveScene().buildIndex == 3) {
+			StartCoroutine(Timeout());
+		}
+    }
+
+    // Update is called once per frame
+    void Update()
 	{
 		/*if (Input.GetKey("right"))
 		{
@@ -45,7 +52,14 @@ public class StateLoader : MonoBehaviour
 		StartCoroutine(LoadState(0));
 	}
 
-	//Creating coroutine??
+	//Only called if on GameEndScene, goes back to HomeScene automatically
+	//after 50f
+	IEnumerator Timeout() {
+		yield return new WaitForSecondsRealtime(50);
+		StartCoroutine(LoadState(0));
+	}
+
+	//A coroutine
 	public IEnumerator LoadState(int sceneIndex)
 	{
 		switch (sceneIndex)

@@ -6,7 +6,7 @@ public class ButterflySpawner : MonoBehaviour
 {
     public GameObject[] butterflyPrefabs;
     public float startDelay = 0f;
-    public float spawnInterval = 45f;
+    public float spawnInterval = 25f;
 
     public Transform[] routes;
     private List<Transform> Paths;
