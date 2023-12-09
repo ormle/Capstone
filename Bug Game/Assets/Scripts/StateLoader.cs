@@ -56,6 +56,7 @@ public class StateLoader : MonoBehaviour
 	//after 50f
 	IEnumerator Timeout() {
 		yield return new WaitForSecondsRealtime(50);
+		ScoreManager.instance.ResetScore();
 		StartCoroutine(LoadState(0));
 	}
 
