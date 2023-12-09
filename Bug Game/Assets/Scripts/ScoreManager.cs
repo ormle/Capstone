@@ -22,7 +22,7 @@ public class ScoreManager : MonoBehaviour
     
     public int total = 0;
 
-    private void Awake()
+    private void Start()
     {
         if (instance == null)
         {
@@ -33,6 +33,7 @@ public class ScoreManager : MonoBehaviour
         { Destroy(gameObject); }
 
         // Retrieve the score from PlayerPrefs when the game starts
+
         score     = PlayerPrefs.GetInt("Score", 0);
         ant       = PlayerPrefs.GetInt("Ant", 0);
         ladybug   = PlayerPrefs.GetInt("Lady", 0);
@@ -49,7 +50,6 @@ public class ScoreManager : MonoBehaviour
         butterflybl = PlayerPrefs.GetInt("Butterflybl", 0);
         dragonflygd = PlayerPrefs.GetInt("Dragonflygd", 0);
         dragonflych = PlayerPrefs.GetInt("Dragonflych", 0);
-        
         
     }
     
