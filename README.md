@@ -10,4 +10,3 @@ Happy bug snatching!
 
 - Collin, Nancy, Yron, & Romel (Team Ladybug 🐞)!
 
-[IMG_4026](https://github.com/nn4ncyy/Team-Ladybug/assets/118306106/332f8a5a-7e3c-497c-b385-f2dd67b8d600)
