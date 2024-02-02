@@ -8,5 +8,5 @@ The game is touch-responsive and was developed using the Unity game engine as we
 
 Happy bug snatching!
 
-- Collin, Nancy, Yron, & Romel (Team Ladybug 🐞)!
+-- Collin, Nancy, Yron, & Romel (Team Ladybug 🐞)
 
